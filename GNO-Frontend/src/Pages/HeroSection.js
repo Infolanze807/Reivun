@@ -1,15 +1,72 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoIosStar } from "react-icons/io";
 import { NavLink } from "react-router-dom";
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import img from "../Images/svgviewer-png-output (1).png";
 
 const HeroSection = () => {
+  useEffect(() => {
+    let deferredPrompt;
+
+    // Listen for the beforeinstallprompt event
+    const handleBeforeInstallPrompt = (event) => {
+      // Prevent the default mini-infobar from appearing on mobile
+      event.preventDefault();
+
+      // Save the event so it can be triggered later
+      deferredPrompt = event;
+
+      // Show the install button
+      const installBtn = document.getElementById('installBtn');
+      installBtn.style.display = 'block';
+
+      // Add a click event listener to the install button
+      const onInstallClick = async () => {
+        if (deferredPrompt) {
+          // Show the install prompt
+          deferredPrompt.prompt();
+
+          // Wait for the user's response
+          const { outcome } = await deferredPrompt.userChoice;
+
+          if (outcome === 'accepted') {
+            console.log('User accepted the install prompt');
+          } else {
+            console.log('User dismissed the install prompt');
+          }
+
+          // Clear the deferred prompt
+          deferredPrompt = null;
+        }
+      };
+
+      installBtn.addEventListener('click', onInstallClick);
+
+      // Cleanup the event listener when the component is unmounted
+      return () => {
+        installBtn.removeEventListener('click', onInstallClick);
+      };
+    };
+
+    // Attach the event listener
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    // Optional: Handle the appinstalled event
+    window.addEventListener('appinstalled', () => {
+      console.log('PWA installed successfully!');
+    });
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+
   return (
     <div className="text-white lg:px-28 md:px-20 px-5 pt-5">
       <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">
         <div className="max-w-lg mx-auto order-2 lg:order-1 md:order-2">
-          <div className="lg:text-5xl text-4xl  font-bold leading-tight">
+          <div className="lg:text-5xl text-4xl font-bold leading-tight">
             True crypto ownership.
           </div>
           <div className="lg:text-5xl text-4xl font-bold leading-tight">
@@ -19,9 +76,8 @@ const HeroSection = () => {
             Unlock the power of your cryptocurrency assets and explore the world
             of Web3 with Trust.
           </div>
-          <div className="py-5 pt-7">
+          <div className="py-5 pt-7" id="installBtn" style={{ display: 'none' }}>
             <NavLink
-              to={"/sign-up"}
               className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
             >
               Get Started&nbsp;
@@ -37,12 +93,12 @@ const HeroSection = () => {
         <div className="text-center font-bold text-xl">
           <p>Trusted by</p>
           <p>
-            <span className="text-[--main-color]">100M+</span> people
+            <span className="text-[--main-color]">200K</span> people
           </p>
         </div>
         <div className="text-center font-bold text-xl">
           <p>Founded in</p>
-          <p className="text-[--main-color]">2017</p>
+          <p className="text-[--main-color]">2024</p>
         </div>
         <div className="text-center font-bold text-xl">
           <p>Independently</p>

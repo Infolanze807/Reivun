@@ -6,7 +6,7 @@ const Policy = () => {
   return (
     <div>
       <Header />
-      <div class="bg-slate-100 px-24 pt-14 responsive-page-paddings mx-auto mb-6 mt-12 grid justify-items-center gap-y-10 tablet:mb-20 tablet:gap-y-20 desktop:mt-16">
+      <div class="bg-slate-100 px-24 pt-24 pb-24">
         <section class="m-auto flex w-full max-w-screen-max+padding flex-col-reverse justify-between gap-7 rounded-[20px] bg-trustBlue px-5 py-10 tablet:flex-row tablet:items-center desktop:rounded-[30px] desktop:p-16 desktop:px-[100px]">
           <div>
             <h1 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH1 leading-mobileH1 tablet:text-desktopH1 tablet:leading-desktopH1 !text-trustWhite">

@@ -1,6 +1,7 @@
+
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "GNO",
+  "name": "GNOSIS Wallet",
   "icons": [
     {
       "src": "gno-wallet.jpeg",
@@ -9,12 +10,12 @@
     },
     {
       "src": "gno-wallet.jpeg",
-      "type": "image/jpeg",
+      "type": "image/png",
       "sizes": "192x192"
     },
     {
       "src": "gno-wallet.jpeg",
-      "type": "image/jpeg",
+      "type": "image/png",
       "sizes": "512x512"
     }
   ],

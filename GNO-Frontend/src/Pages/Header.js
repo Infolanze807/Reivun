@@ -2,26 +2,22 @@ import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../Images/gno-wallet.jpeg"
 import { MoonPayBuyWidget } from '@moonpay/moonpay-react';
-
-
-
-
-    
-      
-
-
-
 const Header = () => {
+  const [isWidgetVisible, setIsWidgetVisible] = useState(false);
 
-  const [visible, setVisible] = useState(false);
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const login = () => {
     navigate("/sign-up");
   };
-  const handleMoonpay = () => {
-    navigate("/moonpay");
+
+  // const handleMoonpay = () => {
+  //   setIsWidgetVisible(true); // Show the widget
+  // };
+
+  const toggleMoonpayWidget = () => {
+    setIsWidgetVisible((prev) => !prev); // Toggle widget visibility
   };
 
   const toggleMenu = () => {
@@ -56,7 +52,7 @@ const Header = () => {
           <button
               type="button"
               className="text-black bg-[--main-color] hover:bg-[--green-color] transition-all duration-300 font-medium rounded-full text-sm px-7 py-2.5 text-center"
-              onClick={() => handleMoonpay()}  
+              onClick={toggleMoonpayWidget} 
             >
             Buy Crypto
             </button>
@@ -124,7 +120,8 @@ const Header = () => {
                 </li> */}
               <li>
                 <NavLink
-                  to={"/contact-us"}
+                  // to={"/contact-us"}
+                  to="mailto:Leviathan5713@gmail.com"
                   onClick={closeMenu}
                   className={({ isActive }) => isActive ? "block py-2 px-3 text-[--main-color] md:p-0" : "block py-2 px-3 text-white md:p-0" }
                 >
@@ -136,6 +133,15 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      {isWidgetVisible && (
+        <MoonPayBuyWidget
+          variant="overlay"
+          baseCurrencyCode="usd"
+          baseCurrencyAmount="100"
+          defaultCurrencyCode="eth"
+          visible
+        />
+      )}
     </div>
   );
 };

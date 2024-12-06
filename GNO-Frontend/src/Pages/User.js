@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import img1 from "../Images/raw.d927cfe4.svg";
 import img2 from "../Images/raw.0acff7b3.svg";
 import img31 from "../Images/raw.323e03ee.svg";
 import img32 from "../Images/raw.16e2b8fb.svg";
 import img33 from "../Images/raw.f17c90c5.svg";
+import { MoonPayBuyWidget } from '@moonpay/moonpay-react';
+import { Link } from "react-router-dom";
 
 const User = () => {
+  const [isWidgetVisible, setIsWidgetVisible] = useState(false);
+
+  // Function to toggle the visibility of the widget
+  const toggleMoonpayWidget = () => {
+    setIsWidgetVisible((prev) => !prev); // Toggle widget visibility
+  };
   return (
     <div className="lg:px-28 md:px-16 px-5">
       <div className="">
@@ -27,7 +35,7 @@ const User = () => {
                 directly to your wallet from exchanges like Binance and
                 Coinbase.
               </div>
-              <div className="py-2.5 px-6 text-[--main-color] border border-[--main-color] rounded-full hover:cursor-pointer hover:bg-[--main-color] hover:text-black w-max transition-all duration-300 font-semibold">
+              <div onClick={toggleMoonpayWidget} className="py-2.5 px-6 text-[--main-color] border border-[--main-color] rounded-full hover:cursor-pointer hover:bg-[--main-color] hover:text-black w-max transition-all duration-300 font-semibold">
                 Get Started with Deposits
               </div>
             </div>
@@ -54,9 +62,11 @@ const User = () => {
                 We secure your wallet, but don't control or have access to your
                 private keys or secret phrase - only you do.
               </div>
+              <Link to={'/sign-up'}>
               <div className="py-2.5 px-6 text-[--bg-color] bg-[--main-color] border border-[--main-color] rounded-full hover:cursor-pointer hover:bg-[--bg-color] hover:text-[--main-color] w-max transition-all duration-300 font-semibold">
                 Get Started
               </div>
+              </Link>
             </div>
             <div>
               <img className="w-[330px] mx-auto" src={img2} alt="Qr" />
@@ -80,10 +90,19 @@ const User = () => {
             </div>
           </div>
           <div className="mt-12 mx-auto py-2.5 px-6 text-[--main-color] bg-[--bg-color] border border-[--bg-color] rounded-full hover:cursor-pointer hover:bg-[--main-color] hover:text-black w-max transition-all duration-300 font-semibold">
-                Get Started with Deposits
+                Create New Wallet
               </div>
         </div>
       </div>
+      {isWidgetVisible && (
+          <MoonPayBuyWidget
+            variant="overlay"
+            baseCurrencyCode="usd"
+            baseCurrencyAmount="100"
+            defaultCurrencyCode="eth"
+            visible={isWidgetVisible}
+          />
+        )}
     </div>
   );
 };

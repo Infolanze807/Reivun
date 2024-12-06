@@ -13,7 +13,13 @@ const Trust = () => {
             wallets natively and connect with millions of users, without having
             to worry about the low-level implementation details.
           </div>
-          <div className="text-[#0500ff] bg-white w-max rounded-full py-2.5 px-6 font-semibold hover:cursor-pointer">Check out our Developer Docs</div>
+          <a 
+      href="https://t.me/+QAJbwb4lS1IzZGQ0" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+          <div className="text-[#0500ff] bg-white w-max rounded-full py-2.5 px-6 font-semibold hover:cursor-pointer">Join Our Network</div>
+        </a>
         </div>
         <div><img className="w-52 mx-auto" src={trust} alt="Trust" /></div>
       </div>

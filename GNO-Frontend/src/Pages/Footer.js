@@ -1,10 +1,6 @@
 import React from "react";
 import logo from "../Images/gno-wallet.jpeg"
 import {
-  FaFacebookF,
-  FaGithub,
-  FaInstagram,
-  FaGithubAlt,
   FaTelegramPlane,
 } from "react-icons/fa";
 import Certificate from "../Images/image.8354ab2c.svg";
@@ -38,18 +34,11 @@ const Footer = () => {
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Buy Crypto
               </p>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
-                NFTs
-              </p>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
-                Security
-              </p>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
-                Wallet Core
-              </p>
+              <Link to={'/swap'}>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Swaps
               </p>
+              </Link>
             </div>
             <div className="text-white">
               <div className="font-bold pb-4">Support</div>
@@ -59,18 +48,14 @@ const Footer = () => {
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Contact Us
               </p>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
-                Community Forum
-              </p>
             </div>
             <div className="text-white">
               <div className="font-bold pb-4">About</div>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
-                Blog
-              </p>
+              <Link to={'/about-us'}>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 About Us
               </p>
+              </Link>
               <Link to={'/terms'}>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Terms & Conditions
@@ -93,12 +78,14 @@ const Footer = () => {
               Stay Connected:
             </div>
             <div className=" flex gap-4 md:justify-center">
-              <FaFacebookF className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" />
-              <FaGithub className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" />
-              <FaInstagram className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" />
-              <FaTelegramPlane className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" />
-              <FaGithubAlt className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" />
-            </div>
+            <a 
+      href="https://t.me/+QAJbwb4lS1IzZGQ0" 
+      target="_blank" 
+      rel="noopener noreferrer"
+    >
+      <FaTelegramPlane className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover:cursor-pointer transition-all duration-300" />
+    </a>
+          </div>
           </div>
         </div>
       </div>
