@@ -16,7 +16,7 @@ const HeroSection = () => {
       // Save the event so it can be triggered later
       deferredPrompt = event;
 
-      // Show the install button
+      // Always show the install button, even if the app is already installed
       const installBtn = document.getElementById('installBtn');
       installBtn.style.display = 'block';
 
@@ -76,7 +76,7 @@ const HeroSection = () => {
             Unlock the power of your cryptocurrency assets and explore the world
             of Web3 with Trust.
           </div>
-          <div className="py-5 pt-7" id="installBtn" style={{ display: 'none' }}>
+          <div className="py-5 pt-7" id="installBtn" style={{ display: 'block' }}>
             <NavLink
               className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
             >
