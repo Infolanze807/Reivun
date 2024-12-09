@@ -462,7 +462,6 @@
 
 // export default HeroSection;
 
-
 import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { NavLink } from "react-router-dom";
@@ -529,41 +528,41 @@ const HeroSection = () => {
       {/* Popup for iOS/macOS */}
       {showPopup && isIosOrMac && (
         <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4">
-        <div className="bg-[#d6d4d5] rounded-2xl max-w-sm w-full shadow-lg">
-          <div className="flex justify-between items-center p-4 border-b border-gray-700">
-            <h2 className="text-lg font-semibold text-black">Add to Home Screen</h2>
-            <button
-              onClick={handleClosePopup} // Use handleClosePopup to close the modal
-              className="text-[--green-color] text-sm font-medium"
-            >
-              Cancel
-            </button>
-          </div>
-          <div className="p-4 space-y-4">
-            <p className="text-gray-500 text-sm">
-              This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.
-            </p>
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="bg-white p-2 rounded-lg">
-                  <MdOutlineIosShare className="w-6 h-6 text-[--green-color]" />
+          <div className="bg-[#d6d4d5] rounded-2xl max-w-sm w-full shadow-lg">
+            <div className="flex justify-between items-center p-4 border-b border-gray-700">
+              <h2 className="text-lg font-semibold text-black">Add to Home Screen</h2>
+              <button
+                onClick={handleClosePopup} // Use handleClosePopup to close the modal
+                className="text-[--green-color] text-sm font-medium"
+              >
+                Cancel
+              </button>
+            </div>
+            <div className="p-4 space-y-4">
+              <p className="text-gray-500 text-sm">
+                This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                    <MdOutlineIosShare className="w-6 h-6 text-[--green-color]" />
+                  </div>
+                  <p className="text-sm pt-1 text-gray-800">
+                    1) Press the &apos;Share&apos; button on the menu bar below.
+                  </p>
                 </div>
-                <p className="text-sm pt-1 text-gray-800">
-                  1) Press the &apos;Share&apos; button on the menu bar below.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="bg-white p-2 rounded-lg">
-                  <FaPlus className="w-6 h-6 text-[--green-color]" />
+                <div className="flex items-start gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                    <FaPlus className="w-6 h-6 text-[--green-color]" />
+                  </div>
+                  <p className="text-sm pt-1 text-gray-800">
+                    2) Press &apos;Add to Home Screen&apos;.
+                  </p>
                 </div>
-                <p className="text-sm pt-1 text-gray-800">
-                  2) Press &apos;Add to Home Screen&apos;.
-                </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
       )}
 
       <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">
@@ -578,14 +577,24 @@ const HeroSection = () => {
             Unlock the power of your cryptocurrency assets and explore the world of Web3 with Trust.
           </div>
 
-          {/* Show the install button for Android or other supported platforms */}
+          {/* Conditional button for iOS/macOS */}
           <div className="py-5 pt-7" id="installBtn">
-            <NavLink
-              className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
-            >
-              Download APP&nbsp;
-              <RiArrowRightDoubleFill className="text-xl" />
-            </NavLink>
+            {isIosOrMac ? (
+              <button
+                onClick={() => setShowPopup(true)} // Show the popup when button is clicked
+                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
+              >
+                Install App&nbsp;
+                <RiArrowRightDoubleFill className="text-xl" />
+              </button>
+            ) : (
+              <NavLink
+                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
+              >
+                Download APP&nbsp;
+                <RiArrowRightDoubleFill className="text-xl" />
+              </NavLink>
+            )}
           </div>
         </div>
         <div className="order-1 lg:order-2 md:order-1">
