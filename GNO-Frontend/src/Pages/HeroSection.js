@@ -289,6 +289,8 @@
 // export default HeroSection;
 import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
+import { MdOutlineIosShare } from "react-icons/md";
+import { FaPlus } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import img from "../Images/svgviewer-png-output (1).png";
@@ -474,7 +476,7 @@ const HeroSection = () => {
              <div className="space-y-4">
                <div className="flex items-start gap-4">
                  <div className="bg-[#3A3A3C] p-2 rounded-lg">
-                   <Share className="w-6 h-6 text-[#007AFF]" />
+                   <MdOutlineIosShare className="w-6 h-6 text-[#007AFF]" />
                  </div>
                  <p className="text-sm pt-1">
                    1) Press the &apos;Share&apos; button on the menu bar below.
@@ -482,7 +484,7 @@ const HeroSection = () => {
                </div>
                <div className="flex items-start gap-4">
                  <div className="bg-[#3A3A3C] p-2 rounded-lg">
-                   <Plus className="w-6 h-6 text-[#007AFF]" />
+                   <FaPlus className="w-6 h-6 text-[#007AFF]" />
                  </div>
                  <p className="text-sm pt-1">
                    2) Press &apos;Add to Home Screen&apos;.
