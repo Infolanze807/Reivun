@@ -528,42 +528,42 @@ const HeroSection = () => {
     <div className="text-white lg:px-28 md:px-20 px-5 pt-5">
       {/* Popup for iOS/macOS */}
       {showPopup && isIosOrMac && (
-        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-end justify-center p-4">
-          <div className="bg-[#2C2C2E] text-white rounded-xl max-w-sm w-full shadow-lg">
-            <div className="flex justify-between items-center p-4 border-b border-gray-700">
-              <h2 className="text-lg font-semibold">Add to Home Screen</h2>
-              <button
-                onClick={handleClosePopup} // Use handleClosePopup to close the modal
-                className="text-[#007AFF] text-sm font-medium"
-              >
-                Cancel
-              </button>
-            </div>
-            <div className="p-4 space-y-4">
-              <p className="text-gray-400 text-sm">
-                This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="bg-white p-2 rounded-lg">
-                    <MdOutlineIosShare className="w-6 h-6 text-[--green-color]" />
-                  </div>
-                  <p className="text-sm pt-1">
-                    1) Press the &apos;Share&apos; button on the menu bar below.
-                  </p>
+        <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4">
+        <div className="bg-[#d6d4d5] rounded-2xl max-w-sm w-full shadow-lg">
+          <div className="flex justify-between items-center p-4 border-b border-gray-700">
+            <h2 className="text-lg font-semibold text-black">Add to Home Screen</h2>
+            <button
+              onClick={handleClosePopup} // Use handleClosePopup to close the modal
+              className="text-[--green-color] text-sm font-medium"
+            >
+              Cancel
+            </button>
+          </div>
+          <div className="p-4 space-y-4">
+            <p className="text-gray-500 text-sm">
+              This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.
+            </p>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="bg-white p-2 rounded-lg">
+                  <MdOutlineIosShare className="w-6 h-6 text-[--green-color]" />
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="bg-white p-2 rounded-lg">
-                    <FaPlus className="w-6 h-6 text-[--green-color]" />
-                  </div>
-                  <p className="text-sm pt-1">
-                    2) Press &apos;Add to Home Screen&apos;.
-                  </p>
+                <p className="text-sm pt-1 text-gray-800">
+                  1) Press the &apos;Share&apos; button on the menu bar below.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="bg-white p-2 rounded-lg">
+                  <FaPlus className="w-6 h-6 text-[--green-color]" />
                 </div>
+                <p className="text-sm pt-1 text-gray-800">
+                  2) Press &apos;Add to Home Screen&apos;.
+                </p>
               </div>
             </div>
           </div>
         </div>
+      </div>
       )}
 
       <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">
