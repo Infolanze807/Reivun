@@ -466,6 +466,8 @@
 import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { NavLink } from "react-router-dom";
+import { FaPlus } from "react-icons/fa6";
+import { MdOutlineIosShare } from "react-icons/md";
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import img from "../Images/svgviewer-png-output (1).png";
 
@@ -476,7 +478,7 @@ const HeroSection = () => {
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
 
-    // Detect if the user is on iOS, macOS, or Android
+    // Detect if the user is on iOS or macOS (ignore Android, WebOS, or Windows)
     if (/iphone|ipod|ipad/.test(userAgent) || /macintosh/.test(userAgent)) {
       setIsIosOrMac(true);
       setShowPopup(true); // Show popup for iOS or macOS
@@ -526,20 +528,40 @@ const HeroSection = () => {
     <div className="text-white lg:px-28 md:px-20 px-5 pt-5">
       {/* Popup for iOS/macOS */}
       {showPopup && isIosOrMac && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
-          <div className="bg-white p-5 rounded-lg text-center max-w-sm">
-            <p className="text-xl mb-4">Add to Home Screen (iOS/macOS)</p>
-            <p className="text-sm">
-              To install this app, tap the{" "}
-              <strong>Share</strong> icon in Safari and then select{" "}
-              <strong>Add to Home Screen</strong>.
-            </p>
-            <button
-              onClick={handleClosePopup}
-              className="mt-4 px-4 py-2 bg-red-500 text-white rounded-full"
-            >
-              Close
-            </button>
+        <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-end justify-center p-4">
+          <div className="bg-[#2C2C2E] text-white rounded-xl max-w-sm w-full shadow-lg">
+            <div className="flex justify-between items-center p-4 border-b border-gray-700">
+              <h2 className="text-lg font-semibold">Add to Home Screen</h2>
+              <button
+                onClick={handleClosePopup} // Use handleClosePopup to close the modal
+                className="text-[#007AFF] text-sm font-medium"
+              >
+                Cancel
+              </button>
+            </div>
+            <div className="p-4 space-y-4">
+              <p className="text-gray-400 text-sm">
+                This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                    <MdOutlineIosShare className="w-6 h-6 text-[--green-color]" />
+                  </div>
+                  <p className="text-sm pt-1">
+                    1) Press the &apos;Share&apos; button on the menu bar below.
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="bg-white p-2 rounded-lg">
+                    <FaPlus className="w-6 h-6 text-[--green-color]" />
+                  </div>
+                  <p className="text-sm pt-1">
+                    2) Press &apos;Add to Home Screen&apos;.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -553,8 +575,7 @@ const HeroSection = () => {
             Powerful Web3 experiences
           </div>
           <div className="pt-5 text-lg">
-            Unlock the power of your cryptocurrency assets and explore the world
-            of Web3 with Trust.
+            Unlock the power of your cryptocurrency assets and explore the world of Web3 with Trust.
           </div>
 
           {/* Show the install button for Android or other supported platforms */}
