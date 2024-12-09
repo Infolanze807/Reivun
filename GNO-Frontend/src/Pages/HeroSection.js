@@ -287,51 +287,44 @@
 // };
 
 // export default HeroSection;
+
 import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
-import { MdOutlineIosShare } from "react-icons/md";
-import { FaPlus } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
+import { FaPlus } from "react-icons/fa6";
+import { MdOutlineIosShare } from "react-icons/md";
+
 import { RiArrowRightDoubleFill } from "react-icons/ri";
 import img from "../Images/svgviewer-png-output (1).png";
 
 const HeroSection = () => {
-  const [isIos, setIsIos] = useState(false);
-  const [isAndroid, setIsAndroid] = useState(false);
+  const [isIosOrMac, setIsIosOrMac] = useState(false); // Detect iOS and macOS
   const [showInstallModal, setShowInstallModal] = useState(false);
 
   useEffect(() => {
-    // Detect if the user is on iOS or Android
+    // Detect if the user is on iOS (iPhone, iPad, iPod) or macOS
     const userAgent = navigator.userAgent.toLowerCase();
+
     if (/iphone|ipod|ipad/.test(userAgent)) {
-      setIsIos(true);
+      setIsIosOrMac(true);  // iOS devices
       setShowInstallModal(true); // Automatically show modal on iOS
-    }
-    if (/android/.test(userAgent)) {
-      setIsAndroid(true);
+    } else if (/macintosh|mac os x/.test(userAgent)) {
+      setIsIosOrMac(true);  // macOS
+      setShowInstallModal(true); // Automatically show modal on macOS
     }
 
     let deferredPrompt;
 
     // Listen for the beforeinstallprompt event (for Android, Windows, or desktop browsers)
     const handleBeforeInstallPrompt = (event) => {
-      // Prevent the default mini-infobar from appearing on mobile
       event.preventDefault();
-
-      // Save the event so it can be triggered later
       deferredPrompt = event;
-
-      // Always show the install button, even if the app is already installed
       const installBtn = document.getElementById("installBtn");
       installBtn.style.display = "block";
 
-      // Add a click event listener to the install button
       const onInstallClick = async () => {
         if (deferredPrompt) {
-          // Show the install prompt
           deferredPrompt.prompt();
-
-          // Wait for the user's response
           const { outcome } = await deferredPrompt.userChoice;
 
           if (outcome === "accepted") {
@@ -339,38 +332,26 @@ const HeroSection = () => {
           } else {
             console.log("User dismissed the install prompt");
           }
-
-          // Clear the deferred prompt
           deferredPrompt = null;
         }
       };
 
       installBtn.addEventListener("click", onInstallClick);
 
-      // Cleanup the event listener when the component is unmounted
       return () => {
         installBtn.removeEventListener("click", onInstallClick);
       };
     };
 
-    // Attach the event listener (for Android, Windows, or desktop devices)
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-
-    // Optional: Handle the appinstalled event
     window.addEventListener("appinstalled", () => {
       console.log("PWA installed successfully!");
     });
 
-    // Cleanup on unmount
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     };
   }, []);
-
-  const handleInstallClick = () => {
-    // Show the modal when user clicks the button
-    setShowInstallModal(true);
-  };
 
   return (
     <div className="text-white lg:px-28 md:px-20 px-5 pt-5">
@@ -387,38 +368,18 @@ const HeroSection = () => {
             of Web3 with Trust.
           </div>
 
-          {/* Show the install button for Android, Windows, or other supported platforms */}
-          <div
-            className="py-5 pt-7"
-            id="installBtn"
-            style={{ display: "block" }} // Always show button
-          >
-            {isIos ? (
+          {/* Show the install button for iOS or macOS */}
+          {isIosOrMac && (
+            <div className="py-5 pt-7">
               <NavLink
                 className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
-                onClick={handleInstallClick}
+                onClick={() => setShowInstallModal(true)}
               >
                 Install PWA&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
               </NavLink>
-            ) : isAndroid ? (
-              <NavLink
-                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
-                onClick={handleInstallClick}
-              >
-                Download APP&nbsp;
-                <RiArrowRightDoubleFill className="text-xl" />
-              </NavLink>
-            ) : (
-              <NavLink
-                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
-                onClick={handleInstallClick}
-              >
-                Download APP&nbsp;
-                <RiArrowRightDoubleFill className="text-xl" />
-              </NavLink>
-            )}
-          </div>
+            </div>
+          )}
         </div>
         <div className="order-1 lg:order-2 md:order-1">
           <img className="lg:w-[560px] md:w-[400px] w-[300px] mx-auto pt-14" src={img} alt="Gnosis" />
