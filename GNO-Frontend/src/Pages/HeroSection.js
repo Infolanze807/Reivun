@@ -297,6 +297,7 @@ import img from "../Images/svgviewer-png-output (1).png";
 const HeroSection = () => {
   const [isIos, setIsIos] = useState(false);
   const [isAndroid, setIsAndroid] = useState(false);
+  const [showInstallModal, setShowInstallModal] = useState(false);
 
   useEffect(() => {
     // Detect if the user is on iOS or Android
@@ -364,6 +365,11 @@ const HeroSection = () => {
     };
   }, []);
 
+  const handleInstallClick = () => {
+    // Show the modal
+    setShowInstallModal(true);
+  };
+
   return (
     <div className="text-white lg:px-28 md:px-20 px-5 pt-5">
       <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">
@@ -388,6 +394,7 @@ const HeroSection = () => {
             {isIos ? (
               <NavLink
                 className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
+                onClick={handleInstallClick}
               >
                 Install PWA&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
@@ -395,6 +402,7 @@ const HeroSection = () => {
             ) : isAndroid ? (
               <NavLink
                 className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
+                onClick={handleInstallClick}
               >
                 Download APP&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
@@ -402,6 +410,7 @@ const HeroSection = () => {
             ) : (
               <NavLink
                 className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
+                onClick={handleInstallClick}
               >
                 Download APP&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
@@ -443,9 +452,31 @@ const HeroSection = () => {
           </p>
         </div>
       </div>
+
+      {/* Modal for installation instructions */}
+      {showInstallModal && (
+        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4">
+          <div className="flex justify-between items-center">
+            <div className="text-sm">
+              <p>This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.</p>
+              <ol className="list-decimal pl-5 mt-2 text-xs">
+                <li>Press the 'Share' button on the menu bar below.</li>
+                <li>Press 'Add to Home Screen'.</li>
+              </ol>
+            </div>
+            <button
+              onClick={() => setShowInstallModal(false)}
+              className="text-xl text-white"
+            >
+              ×
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default HeroSection;
+
 
