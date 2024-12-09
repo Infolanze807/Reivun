@@ -287,7 +287,6 @@
 // };
 
 // export default HeroSection;
-
 import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import { NavLink } from "react-router-dom";
@@ -304,6 +303,7 @@ const HeroSection = () => {
     const userAgent = navigator.userAgent.toLowerCase();
     if (/iphone|ipod|ipad/.test(userAgent)) {
       setIsIos(true);
+      setShowInstallModal(true); // Automatically show modal on iOS
     }
     if (/android/.test(userAgent)) {
       setIsAndroid(true);
@@ -366,7 +366,7 @@ const HeroSection = () => {
   }, []);
 
   const handleInstallClick = () => {
-    // Show the modal
+    // Show the modal when user clicks the button
     setShowInstallModal(true);
   };
 
@@ -455,28 +455,46 @@ const HeroSection = () => {
 
       {/* Modal for installation instructions */}
       {showInstallModal && (
-        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4">
-          <div className="flex justify-between items-center">
-            <div className="text-sm">
-              <p>This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.</p>
-              <ol className="list-decimal pl-5 mt-2 text-xs">
-                <li>Press the 'Share' button on the menu bar below.</li>
-                <li>Press 'Add to Home Screen'.</li>
-              </ol>
-            </div>
-            <button
+         <div className="fixed inset-0 bg-black/20 backdrop-blur-sm flex items-center justify-center p-4">
+         <div className="bg-[#2C2C2E] text-white rounded-xl max-w-sm w-full shadow-lg">
+           <div className="flex justify-between items-center p-4 border-b border-gray-700">
+             <h2 className="text-lg font-semibold">Add to Home Screen</h2>
+             <button
               onClick={() => setShowInstallModal(false)}
-              className="text-xl text-white"
-            >
-              ×
-            </button>
-          </div>
-        </div>
+               className="text-[#007AFF] text-sm font-medium"
+             >
+               Cancel
+             </button>
+           </div>
+           <div className="p-4 space-y-4">
+             <p className="text-gray-400 text-sm">
+               This website has app functionality. Add it to your home screen to use
+               it in fullscreen and while offline.
+             </p>
+             <div className="space-y-4">
+               <div className="flex items-start gap-4">
+                 <div className="bg-[#3A3A3C] p-2 rounded-lg">
+                   <Share className="w-6 h-6 text-[#007AFF]" />
+                 </div>
+                 <p className="text-sm pt-1">
+                   1) Press the &apos;Share&apos; button on the menu bar below.
+                 </p>
+               </div>
+               <div className="flex items-start gap-4">
+                 <div className="bg-[#3A3A3C] p-2 rounded-lg">
+                   <Plus className="w-6 h-6 text-[#007AFF]" />
+                 </div>
+                 <p className="text-sm pt-1">
+                   2) Press &apos;Add to Home Screen&apos;.
+                 </p>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
       )}
     </div>
   );
 };
 
 export default HeroSection;
-
-
