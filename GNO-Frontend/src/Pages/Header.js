@@ -661,15 +661,6 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to="#"
-                      className="py-2 px-3 text-white hover:text-[--main-color] flex items-center gap-x-2 transition-colors duration-500"
-                    >
-                      <MdPlayArrow className="lg:hidden" />
-                      Services
-                    </NavLink>
-                  </li>
-                  <li>
                     <a
                       href="mailto:Leviathan5713@gmail.com"
                       onClick={closeMenu}

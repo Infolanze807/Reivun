@@ -774,7 +774,7 @@ const HeroSection = () => {
             Powerful Web3 experiences
           </div>
           <div className="pt-5 text-lg">
-            Unlock the power of your cryptocurrency assets and explore the world of Web3 with Trust.
+            Unlock the power of your cryptocurrency assets and explore the world of Web3 with Reivun.
           </div>
 
           {/* Conditional button for iOS/macOS or installed status */}

@@ -6,9 +6,9 @@ const About = () => {
   return (
     <div>
       <Header />
-      <div className='text-white p-24'>
+      <div className='text-white py-28 md:py-32 px-5 md:px-20'>
       <div className="max-w-3xl mx-auto font-sans">
-      <h1 className="text-3xl font-bold text-center mb-6 text-[--green-color]">About Us</h1>
+      <h1 className="text-3xl font-bold text-center mb-10 text-[--green-color]">About Us</h1>
       <p className="text-lg mb-4">
         Welcome to Reivun, the next-generation wallet designed for secure and decentralized management of your digital assets.
       </p>
