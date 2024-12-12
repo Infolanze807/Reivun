@@ -6,18 +6,18 @@ const Terms = () => {
   return (
     <>
       <Header />
-      <div class=" bg-slate-100 px-24 pt-24 pb-24">
-        <section class="m-auto flex w-full max-w-screen-max+padding flex-col-reverse justify-between gap-7 rounded-[20px] bg-trustBlue px-5 py-10 tablet:flex-row tablet:items-center desktop:rounded-[30px] desktop:p-16 desktop:px-[100px] max-w-screen-max+padding">
+      <div className="text-white py-28 md:py-32 px-5 md:px-20">
+        <section >
           <div>
-            <h1 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH1 leading-mobileH1 tablet:text-desktopH1 tablet:leading-desktopH1 !text-trustWhite">
-              Reivun Wallet <br /> Terms of Service{" "}
+            <h1 className="text-2xl text-[--green-color]">
+              Terms of Service{" "}
             </h1>
-            <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyLarge leading-mobileBodyLarge tablet:text-desktopBodyLarge tablet:leading-desktopBodyLarge mt-6 max-w-[35ch] !text-trustWhite">
+            <p className="py-5 text-gray-400">
               Last Updated: Aug 25, 2022
             </p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
+        <section className="pb-3">
           <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
             DApps Platform, Inc., and/or its affiliates (“we,” “our,” or “us”)
             provides its software services through its website located at
@@ -28,12 +28,12 @@ const Terms = () => {
             applications.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Agreement to Terms
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            By accessing or using any or all of the Services, you expressly
+          <p className="pt-2 pb-5">
+                        By accessing or using any or all of the Services, you expressly
             acknowledge that (i) you have read and understood these Terms; (ii)
             you agree to be bound by these Terms; and (iii) you are legally
             competent to enter into these Terms. If you do not agree to be bound
@@ -46,12 +46,11 @@ const Terms = () => {
             ASSETS SHOULD BE TAKEN ON YOUR OWN ACCORD.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Privacy Policy
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            For an explanation on how we collect, use and disclose information
+          <p className="pt-2">            For an explanation on how we collect, use and disclose information
             from our users please see our Privacy Policy at
             https://trustwallet.com/privacy-policy. You acknowledge and agree
             that your use of the Services is subject to, and that we can
@@ -60,12 +59,11 @@ const Terms = () => {
             Policy.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Updates to Terms or Service
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            We reserve the right to update or modify these Terms at any time at
+          <p className="pt-2">            We reserve the right to update or modify these Terms at any time at
             our sole discretion. If we do so, we’ll let you know by either
             posting the revised Terms on our website, on our mobile application
             or through other methods of communication which we deem reasonable.
@@ -82,12 +80,11 @@ const Terms = () => {
             discretion.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Eligibility
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            To be eligible to use Reivun Wallet: (i) you must be at least
+          <p className="pt-2">            To be eligible to use Reivun Wallet: (i) you must be at least
             eighteen (18) years old and legally competent to enter into these
             Terms; (ii) you must not be a resident of sanctioned jurisdictions
             according to any trade embargoes, UN Security Council Resolutions
@@ -117,12 +114,11 @@ const Terms = () => {
             at any time.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Services
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            Reivun Wallet is a non-custodial wallet software, for digital assets
+          <p className="pt-2">            Reivun Wallet is a non-custodial wallet software, for digital assets
             such as cryptocurrencies, virtual commodities and NFTs (“Digital
             Assets”), meaning you are solely in control of and responsible for
             your Digital Assets and private keys, and accordingly you can
@@ -173,7 +169,7 @@ const Terms = () => {
             </li>
           </ol>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Wallet Address, Private Key, and Backup Capabilities
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -203,7 +199,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Use of DApps and DEX
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -237,7 +233,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Use of Staking Service
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -255,7 +251,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Buy Digital Assets with Supported Credit or Debit Cards
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -276,10 +272,10 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Digital Asset Transactions
             </h3>
-            <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+            <p >
               In order for all proposed Digital Asset transactions to be
               completed, they must be confirmed and recorded in the Digital
               Asset’s associated public blockchain. Such networks are
@@ -300,7 +296,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Accuracy of Information Provided by User
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -313,12 +309,11 @@ const Terms = () => {
             </p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Wallet Registration and Security
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            You must either import or create a wallet in order to use Trust
+          <p className="pt-2 pb-5">            You must either import or create a wallet in order to use Trust
             Wallet. When you create a wallet, you will be assigned a private
             key. You agree to immediately notify us of any unauthorized use of
             your private key or any other breach of security of your wallet.
@@ -343,7 +338,7 @@ const Terms = () => {
             your wallet with or without your authorization.
           </p>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Push Notifications
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -356,7 +351,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Payment and Fees
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -366,7 +361,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Transaction Fees
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -384,7 +379,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+           <h3 className="text-gray-400 text-sm py-2">
               Taxes
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -399,12 +394,11 @@ const Terms = () => {
             </p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Third Party Services and Content
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            In no event shall a description or reference to a third party’s
+          <p className="pt-2">            In no event shall a description or reference to a third party’s
             product or service (including, but not limited to, providing a
             description or reference via hyperlink) be construed as an
             endorsement or promotion of such third party products or services by
@@ -426,12 +420,12 @@ const Terms = () => {
             all acts or omissions of any third party with access to your wallet.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Intellectual Property
           </h2>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               License
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -458,7 +452,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               Feedback
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -473,7 +467,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               Open Source
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -489,7 +483,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               Content
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -507,7 +501,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               License to NFT Content
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -546,12 +540,11 @@ const Terms = () => {
             </p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Your Use of Reivun Wallet
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            You agree that you will not violate any laws when using our
+          <p className="pt-2 pb-5">            You agree that you will not violate any laws when using our
             Services. This includes any local, provincial, state, federal,
             national, or international laws that may apply to you. You agree
             that you will not use our Services to pay for, support, or otherwise
@@ -593,12 +586,11 @@ const Terms = () => {
             content.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Limitation of Liability &amp; Disclaimer of Warranties
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            You acknowledge and agree that we have no control over, and no duty
+          <p className="pt-2 pb-5">            You acknowledge and agree that we have no control over, and no duty
             to take any action regarding: (i) failures, disruptions, errors, or
             delays in the processing of Digital Assets that you may experience
             while using the Services; (ii) the risk of failure of hardware,
@@ -623,7 +615,7 @@ const Terms = () => {
             and such organizations and/or individuals.
           </p>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               Limitation of Liability
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -668,7 +660,7 @@ const Terms = () => {
             </p>
           </div>
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3 className="text-gray-400 text-sm py-2">
               Warranty Disclaimer
             </h3>
             <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
@@ -697,11 +689,11 @@ const Terms = () => {
             </p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Indemnity
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2">            
             To the extent permitted by applicable law, you agree to defend,
             indemnify, and hold harmless us, our affiliates, and our respective
             shareholders, members, directors, officers, employees, attorneys,
@@ -715,21 +707,21 @@ const Terms = () => {
             rule, or regulation, or the rights of any third party.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             The Limitation on Claims
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2">            
             You agree that any claim you may have arising out of or related to
             your relationship with us must be filed within one year after such
             claim arises, otherwise, your claim is permanently barred.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Governing Law
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             No matter where you’re located, the laws of the State of California
             will govern these Terms and the parties’ relationship as if you
             signed these Terms in California, without regard to California’s
@@ -744,11 +736,11 @@ const Terms = () => {
             conveniens in any such action.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Note to International Users
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             No matter where you’re located, the laws of the State of California
             will govern these Terms and the parties’ relationship as if you
             signed these Terms in California, without regard to California’s
@@ -763,11 +755,11 @@ const Terms = () => {
             conveniens in any such action.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Termination
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             In the event of termination concerning your license to use Trust
             Wallet, your obligations under this Agreement will still continue.
             Your access to the funds in your Wallet after termination will
@@ -775,11 +767,11 @@ const Terms = () => {
             private key.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Discount of Services
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             We may, in our sole discretion and without cost to you, with or
             without prior notice, and at any time, modify or discontinue,
             temporarily or permanently, any portion of our Services. You are
@@ -797,11 +789,11 @@ const Terms = () => {
             part of the Services.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             No Waiver
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             Our failure to exercise or delay in exercising any right, power, or
             privilege under this Agreement shall not operate as a waiver; nor
             shall any single or partial exercise of any right, power, or
@@ -813,11 +805,11 @@ const Terms = () => {
             prejudice to its other remedies under this Agreement or otherwise.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Severability
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             If it turns out that any part of this Agreement is invalid, void, or
             for any reason unenforceable, that term will be deemed severable and
             limited or eliminated to the minimum extent necessary. The
@@ -827,11 +819,11 @@ const Terms = () => {
             these Terms.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Arbitration &amp; Waiver of Class Action
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             The parties agree to arbitrate any dispute arising from this
             Agreement or your use of the Services on an individual basis.
             ARBITRATION PREVENTS YOU FROM SUING IN COURT OR FROM HAVING A JURY

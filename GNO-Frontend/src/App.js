@@ -22,6 +22,10 @@ import Policy from "./Pages/Policy.js";
 import { MoonPayProvider } from '@moonpay/moonpay-react';
 import MoonPay from './Pages/MoonPay.js';
 import Swap from './Pages/Swap.js';
+import BrowserEXt from './Pages/BrowserExt.js';
+import FAQ from './Pages/FAQ.js';
+import ScrollTop from './Pages/ScrollTop.js';
+
 
 function App() {
   const [walletAddress, setWalletAddress] = useState("");
@@ -37,6 +41,7 @@ function App() {
 >
 
  <BrowserRouter>
+ <ScrollTop />
  <AuthProvider>
       <Routes>
       <Route element={<PrivateRoutes />}>
@@ -60,6 +65,8 @@ function App() {
         <Route path='/terms' element={<Terms/>}/>
         <Route path='/policy' element={<Policy/>}/>
         <Route path='/swap' element={<Swap/>}/>
+        <Route path='/browser-extension' element={<BrowserEXt/>}/>
+        <Route path='/faq' element={<FAQ/>}/>
       </Routes>
       </AuthProvider>
       

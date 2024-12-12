@@ -89,9 +89,11 @@ const User = () => {
                 <div className="text-white">Stay safe with alerts for risky address and dApp connections.</div>
             </div>
           </div>
+          <Link to={'/sign-up'}>
           <div className="mt-12 mx-auto py-2.5 px-6 text-[--main-color] bg-[--bg-color] border border-[--bg-color] rounded-full hover:cursor-pointer hover:bg-[--main-color] hover:text-black w-max transition-all duration-300 font-semibold">
                 Create New Wallet
               </div>
+              </Link>
         </div>
       </div>
       {isWidgetVisible && (

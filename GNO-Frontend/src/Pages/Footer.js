@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../Images/gno-wallet.jpeg"
 import {
   FaTelegramPlane,
 } from "react-icons/fa";
 import Certificate from "../Images/image.8354ab2c.svg";
 import { Link } from "react-router-dom";
+import { MoonPayBuyWidget } from "@moonpay/moonpay-react";
 
 const Footer = () => {
+  const [isWidgetVisible, setIsWidgetVisible] = useState(false);
+  const toggleMoonpayWidget = () => {
+    setIsWidgetVisible((prev) => !prev);
+  };
+
+  const scrollToHeroSection = () => {
+    const heroElement = document.getElementById("hero-section");
+    if (heroElement) {
+      heroElement.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <div className="lg:px-28 md:px-20 px-5 border-t border-gray-600">
       <div className="grid lg:grid-cols-10 md:grid-cols-1 grid-cols-1 items-center gap-5 py-10">
@@ -22,16 +34,20 @@ const Footer = () => {
           <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-4 lg:gap-0 md:gap-0">
             <div className="text-white">
               <div className="font-bold pb-4">Wallet</div>
+              <Link to={'/'}>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Mobile App
               </p>
+              </Link>
+              <Link to={'/browser-extension'}>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Browser Extension
               </p>
+              </Link>
             </div>
             <div className="text-white">
               <div className="font-bold pb-4">Features</div>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
+              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" onClick={toggleMoonpayWidget}>
                 Buy Crypto
               </p>
               <Link to={'/swap'}>
@@ -42,12 +58,16 @@ const Footer = () => {
             </div>
             <div className="text-white">
               <div className="font-bold pb-4">Support</div>
+              <Link to={'/faq'}>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 FAQs
               </p>
+              </Link>
+              <a href="mailto:Leviathan5713@gmail.com">
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
                 Contact Us
               </p>
+              </a>
             </div>
             <div className="text-white">
               <div className="font-bold pb-4">About</div>
@@ -89,6 +109,15 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {isWidgetVisible && (
+        <MoonPayBuyWidget
+          variant="overlay"
+          baseCurrencyCode="usd"
+          baseCurrencyAmount="100"
+          defaultCurrencyCode="eth"
+          visible={isWidgetVisible}
+        />
+      )}
     </div>
   );
 };

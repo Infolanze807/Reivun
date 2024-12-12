@@ -724,7 +724,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="text-white lg:px-28 md:px-20 px-5 pt-5">
+    <div className="text-white lg:px-28 md:px-20 px-5 pt-5" id="hero-section">
       {/* Popup for iOS/macOS */}
       {showPopup && isIosOrMac && (
         <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4">
@@ -780,7 +780,7 @@ const HeroSection = () => {
           {/* Conditional button for iOS/macOS or installed status */}
           <div className="py-5 pt-7">
             {isAppInstalled ? (
-              <p className="text-[--green-color] text-base cursor-not-allowed flex items-center">
+              <p className="text-[--green-color] text-base cursor-not-allowed flex items-center hidden">
                 <RiArrowLeftDoubleFill className="text-xl" />
                 &nbsp;Installed&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />

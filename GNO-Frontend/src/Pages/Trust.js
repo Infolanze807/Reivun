@@ -3,7 +3,7 @@ import trust from "../Images/raw.b373ab3f.svg"
 
 const Trust = () => {
   return (
-    <div className="lg:px-28 md:px-20 px-5 lg:py-16 md:py-16 py-10">
+    <div className="text-white py-28 md:py-32 px-5 md:px-20">
       <div className="lg:flex md:flex items-center gap-10 justify-between lg:px-28 md:px-14 px-5 lg:py-14 md:py-14 py-8 rounded-xl bg-[#0500ff]">
         <div className="text-white">
           <div className="text-4xl font-bold">Building on Trust</div>

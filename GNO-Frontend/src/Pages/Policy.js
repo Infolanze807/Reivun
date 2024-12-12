@@ -6,43 +6,33 @@ const Policy = () => {
   return (
     <div>
       <Header />
-      <div class="bg-slate-100 px-24 pt-24 pb-24">
-        <section class="m-auto flex w-full max-w-screen-max+padding flex-col-reverse justify-between gap-7 rounded-[20px] bg-trustBlue px-5 py-10 tablet:flex-row tablet:items-center desktop:rounded-[30px] desktop:p-16 desktop:px-[100px]">
+      <div class="text-white py-28 md:py-32 px-5 md:px-20">
+        <section>
           <div>
-            <h1 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH1 leading-mobileH1 tablet:text-desktopH1 tablet:leading-desktopH1 !text-trustWhite">
-              Reivun Wallet <br /> Privacy and Policy{" "}
+            <h1 className="text-2xl text-[--green-color]">
+              Privacy Policy
             </h1>
-            <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyLarge leading-mobileBodyLarge tablet:text-desktopBodyLarge tablet:leading-desktopBodyLarge mt-6 max-w-[35ch] !text-trustWhite">
+            <p className="py-5 text-gray-400">
               Last Updated: Apr 8, 2022
             </p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
+        <section className="pb-3">
           <div>
-            <h3 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 my-5 tablet:my-4">
+            <h3>
               This Privacy Notice describes the policies and procedures of DApps
               Platform, Inc., (“we,” “our,” or “us”) pertaining to the
               collection, use, and disclosure of your information on
-              www.trustwallet.com and related mobile applications and products
+              www.reivun.cloud and related mobile applications and products
               we offer (the “Services” or “Reivun Wallet”).
             </h3>
-            <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium"></p>
           </div>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
-            This Privacy Notice describes the policies and procedures of DApps
-            Platform, Inc., (“we,” “our,” or “us”) pertaining to the collection,
-            use, and disclosure of your information on www.trustwallet.com and
-            related mobile applications and products we offer (the “Services” or
-            “Reivun Wallet”).
-          </p>
-        </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Overview
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             Your right to privacy and the protection of your personal data is
             important to us. The following sections provide further details as
             to how we process your personal information through Reivun Wallet. We
@@ -55,21 +45,21 @@ const Policy = () => {
             support@trustwallet.com.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             How do you accept this policy
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             By using Reivun Wallet, including downloading one of our mobile
             applications or visiting our website, you agree to the use,
             disclosure, and procedures outlined in this Privacy Policy.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             What personal information do we collect from our users
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             We do our best to minimize the amount of Personal Information that
             we collect from Reivun Wallet users. Your contact information, such
             as your phone number,, or email address (depending on how you
@@ -80,11 +70,11 @@ const Policy = () => {
             generate through Reivun Wallet.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Will we share your personal date with third parties
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             Information about our users is an important part of our business and
             we are not in the business of selling our users’ personal
             information to others. We may transfer personal data to our service
@@ -108,11 +98,11 @@ const Policy = () => {
             publishers, advertisers, developers, or right holders.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             How we use the information we gather
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             We primarily use the limited information that we collect to enhance
             Reivun Wallet. Except if we sell all or a portion of our business, or
             as otherwise described below, we do not rent, trade, or sell your
@@ -157,11 +147,11 @@ const Policy = () => {
             users, or others.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Your rights with respect to the processing of personal data{" "}
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             You are entitled (under the conditions, and subject to the
             exceptions, set out in applicable law) to: Request Access to the
             personal information we process about you: You can request access to
@@ -194,11 +184,11 @@ const Policy = () => {
             personal data.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Data retention
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             Please note that even If you delete your Wallet or addresses from
             the Reivun Wallet mobile application, uninstall Reivun Wallet mobile
             applications from your device, or request that your information be
@@ -209,11 +199,11 @@ const Policy = () => {
             information, please contact support@trustwallet.com.
           </p>
         </section>
-        <section class="w-full max-w-screen-max+padding">
-          <h2 class="default-transition text-trustBlack font-wixMadefor font-bold dark:text-trustWhite text-mobileH5 leading-mobileH5 tablet:text-desktopH5 tablet:leading-desktopH5 mb-5 text-trustBlue dark:!text-trustGreen tablet:mb-4">
+        <section className="py-3">
+          <h2 className="text-xl text-[--green-color]">
             Data security
           </h2>
-          <p class="default-transition text-lightBlack font-inter dark:text-trustWhite text-mobileBodyMedium leading-mobileBodyMedium tablet:text-desktopBodyMedium tablet:leading-desktopBodyMedium">
+          <p className="pt-2 pb-5">
             We are committed to making sure your information is protected in
             accordance with applicable laws and our data privacy policies. We
             have selected third-party vendors that use the Ethereum network,
