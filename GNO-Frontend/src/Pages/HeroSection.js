@@ -780,7 +780,7 @@ const HeroSection = () => {
           {/* Conditional button for iOS/macOS or installed status */}
           <div className="py-5 pt-7">
             {isAppInstalled ? (
-              <p className="text-[--green-color] text-base cursor-not-allowed flex items-center hidden">
+              <p className="text-[--green-color] text-base cursor-not-allowed items-center hidden">
                 <RiArrowLeftDoubleFill className="text-xl" />
                 &nbsp;Installed&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
