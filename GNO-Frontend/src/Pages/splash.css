@@ -1,0 +1,78 @@
+/* SplashScreen.css */
+.fixed {
+    position: fixed;
+  }
+  
+  .inset-0 {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .bg-gradient-to-r {
+    background: linear-gradient(to right, #3b82f6, #9333ea);
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .animate-pulse {
+    animation: pulse 1s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  .w-12 {
+    width: 3rem;
+  }
+  
+  .h-12 {
+    height: 3rem;
+  }
+  
+  .border-t-4 {
+    border-top-width: 4px;
+  }
+  
+  .border-solid {
+    border-style: solid;
+  }
+  
+  .border-white {
+    border-color: #ffffff;
+  }
+  
+  .rounded-full {
+    border-radius: 9999px;
+  }
+  
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
