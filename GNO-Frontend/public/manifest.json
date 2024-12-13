@@ -1,3 +1,4 @@
+
 {
   "short_name": "Reivun",
   "name": "Reivun Wallet App",
@@ -11,9 +12,15 @@
       "src": "gno-wallet.jpeg",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "REIVUN.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
-  "background_color": "#ffffff",
-  "display": "standalone"
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#54ff8d"
 }
