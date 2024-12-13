@@ -61,7 +61,16 @@ import logo from '../Images/gno-wallet.jpeg'; // Import the logo image
 
 const Home = () => {
   const [isPWA, setIsPWA] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const showSplashScreen = () => {
+    setLoading(true); // Show splash screen
+    const timer = setTimeout(() => {
+      setLoading(false); // Hide splash screen after 2 seconds
+    }, 2000);
+
+    return () => clearTimeout(timer); // Cleanup timer
+  };
 
   useEffect(() => {
     // Detect if the app is running as a PWA
@@ -69,21 +78,24 @@ const Home = () => {
       window.matchMedia('(display-mode: standalone)').matches ||
       window.navigator.standalone === true // For iOS
     ) {
-      setIsPWA(true); // Set isPWA to true if it’s a PWA
+      setIsPWA(true);
     }
 
-    // Check if splash screen has already been shown
-    const splashShown = localStorage.getItem('splashShown');
+    // Show splash screen on initial load
+    showSplashScreen();
 
-    if (!splashShown) {
-      setLoading(true); // Show the splash screen
-      localStorage.setItem('splashShown', 'true'); // Mark splash as shown
-      const timer = setTimeout(() => {
-        setLoading(false); // Hide splash screen after 2 seconds
-      }, 2000);
+    // Handle visibility changes to show splash screen again when app is reopened
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        showSplashScreen(); // Show splash screen again when app becomes visible
+      }
+    };
 
-      return () => clearTimeout(timer); // Cleanup timer on component unmount
-    }
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
   }, []);
 
   return (
@@ -107,3 +119,4 @@ const Home = () => {
 };
 
 export default Home;
+
