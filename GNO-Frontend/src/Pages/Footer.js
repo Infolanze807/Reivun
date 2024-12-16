@@ -88,8 +88,9 @@ const Footer = () => {
           </div>
         </div>
         <div className="lg:col-span-6">
-          <div className="grid lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-4 lg:gap-0 md:gap-0">
-          {isAppInstalled ? ( <div className="text-white hidden">
+        <div className={`grid space-x-2  ${isAppInstalled ? "lg:grid-cols-3 md:grid-cols-3 grid-cols-3 gap-4 lg:gap-0 md:gap-0" : "lg:grid-cols-4 md:grid-cols-4 grid-cols-2 gap-4 lg:gap-0 md:gap-0"}`}>
+          {/* <div className="grid lg:grid-cols-3 md:grid-cols-2 lg:text-left md:text-center text-left grid-cols-2 gap-4 lg:gap-0 md:gap-0"> */}
+          <div className={`text-white ${isAppInstalled ? "hidden" : "block"}`}>
             <div className="font-bold pb-4">Wallet</div>
               {isAppInstalled ? (
             <button
@@ -118,36 +119,7 @@ const Footer = () => {
                 Browser Extension
               </p>
               </Link>
-            </div>):<div className="text-white">
-            <div className="font-bold pb-4">Wallet</div>
-              {isAppInstalled ? (
-            <button
-            onClick={() => setShowPopupInstalled(true)}
-            className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300"
-          >
-            Install App
-          </button>
-          ) : isIosOrMac ? (
-            <button
-              onClick={() => setShowPopup(true)}
-              className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300"
-            >
-              Install App
-            </button>
-          ) : (
-            <button
-              onClick={handleInstallClick}
-              className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300"
-            >
-               Install App
-            </button>
-          )}
-              <Link to={'/browser-extension'}>
-              <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300">
-                Browser Extension
-              </p>
-              </Link>
-            </div>}
+            </div>
             <div className="text-white">
               <div className="font-bold pb-4">Features</div>
               <p className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300" onClick={toggleMoonpayWidget}>
