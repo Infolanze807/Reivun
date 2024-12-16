@@ -21,3 +21,7 @@ body{
 {
     outline: 1px solid transparent;  
 }
+img
+{
+  filter: invert(0);
+}
