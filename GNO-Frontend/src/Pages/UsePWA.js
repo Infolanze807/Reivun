@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 
 const usePWA = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null); // Store the deferred prompt
-  const [isAppInstalled, setIsAppInstalled] = useState(false); // App installed state
-  const [isIosOrMac, setIsIosOrMac] = useState(false); // iOS/macOS detection
-  const [showPopup, setShowPopup] = useState(false); // Control the iOS popup visibility
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isAppInstalled, setIsAppInstalled] = useState(false); 
+  const [isIosOrMac, setIsIosOrMac] = useState(false); 
+  const [showPopup, setShowPopup] = useState(false); 
+  const [showPopupInstalled, setShowPopupInstalled] = useState(false);
 
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -62,6 +63,8 @@ const usePWA = () => {
     showPopup,
     setShowPopup,
     handleInstallClick,
+    showPopupInstalled,
+    setShowPopupInstalled,
   };
 };
 

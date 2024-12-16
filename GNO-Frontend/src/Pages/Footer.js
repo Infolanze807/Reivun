@@ -3,7 +3,7 @@ import logo from "../Images/gno-wallet.jpeg"
 import {
   FaTelegramPlane,
 } from "react-icons/fa";
-import { RiArrowRightDoubleFill } from "react-icons/ri";
+import { CgClose } from "react-icons/cg";
 import { FaPlus } from "react-icons/fa6";
 import { MdOutlineIosShare } from "react-icons/md";
 import Certificate from "../Images/image.8354ab2c.svg";
@@ -12,18 +12,13 @@ import { MoonPayBuyWidget } from "@moonpay/moonpay-react";
 import usePWA from "./UsePWA";
 
 const Footer = () => {
-  const { isAppInstalled, isIosOrMac, showPopup, setShowPopup, handleInstallClick } = usePWA();
+  const { isAppInstalled, isIosOrMac, showPopup, setShowPopup, handleInstallClick,showPopupInstalled,setShowPopupInstalled } = usePWA();
   const [isWidgetVisible, setIsWidgetVisible] = useState(false);
+
   const toggleMoonpayWidget = () => {
     setIsWidgetVisible((prev) => !prev);
   };
 
-  const scrollToHeroSection = () => {
-    const heroElement = document.getElementById("hero-section");
-    if (heroElement) {
-      heroElement.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   return (
     <div className="lg:px-28 md:px-20 px-5 border-t border-gray-600">
             {/* Popup for iOS/macOS */}
@@ -36,7 +31,7 @@ const Footer = () => {
                        onClick={() => setShowPopup(false)}
                       className="text-[--green-color] text-sm font-medium"
                     >
-                      Cancel
+                      <CgClose  className="text-2xl"/>
                     </button>
                   </div>
                   <div className="p-4 space-y-4">
@@ -65,6 +60,24 @@ const Footer = () => {
                 </div>
               </div>
             )}
+
+            {/* for app status */}
+      {showPopupInstalled && isAppInstalled && (
+        <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4">
+          <div className="bg-[#d6d4d5] rounded-2xl max-w-sm w-full shadow-lg">
+            <div className="flex justify-between items-center p-4">
+              <h2 className="text-lg font-semibold text-black"> Application already Installed</h2>
+              <button
+                onClick={() => setShowPopupInstalled(false)} 
+                className="text-[--green-color] text-sm font-medium"
+              >
+                <CgClose  className="text-2xl"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="grid lg:grid-cols-10 md:grid-cols-1 grid-cols-1 items-center gap-5 py-10">
         <div className="lg:col-span-2">
           <div className="text-4xl text-[--main-color] text-center font-bold uppercase">
@@ -79,10 +92,12 @@ const Footer = () => {
             <div className="text-white">
               <div className="font-bold pb-4">Wallet</div>
               {isAppInstalled ? (
-            <p className="text-[--green-color] text-base hidden">
-              Installed&nbsp;
-              <RiArrowRightDoubleFill className="text-xl" />
-            </p>
+            <button
+            onClick={() => setShowPopupInstalled(true)}
+            className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300"
+          >
+            Install App
+          </button>
           ) : isIosOrMac ? (
             <button
               onClick={() => setShowPopup(true)}
@@ -95,7 +110,7 @@ const Footer = () => {
               onClick={handleInstallClick}
               className="text-sm pb-1 hover:text-[--main-color] hover: cursor-pointer transition-all duration-300"
             >
-              Download App
+               Install App
             </button>
           )}
               <Link to={'/browser-extension'}>
