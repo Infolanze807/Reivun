@@ -825,7 +825,7 @@ const HeroSection = () => {
                 onClick={handleInstallClick} // Trigger PWA installation when clicked
                 className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
               >
-                Download APP&nbsp;
+                 Install App&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
               </button>
             )}
