@@ -575,7 +575,7 @@ const Header = () => {
         <div className="grid grid-cols-12 p-2 mx-2 md:mx-5 lg:mx-8 items-center">
           {/* Logo and Site Name */}
           <div className="lg:col-span-4 col-span-6">
-            <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+            <a href="/" className="flex items-center grid-cols-3 space-x-3">
               <img
                 src={logo}
                 className="md:w-16 w-12 rounded-full"
