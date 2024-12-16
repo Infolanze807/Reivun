@@ -872,58 +872,84 @@
 // export default HeroSection;
 
 import React, { useEffect, useState } from "react";
-import { RiArrowRightDoubleFill } from "react-icons/ri";
-import { MdOutlineIosShare } from "react-icons/md";
+import { RiArrowLeftDoubleFill, RiArrowRightDoubleFill } from "react-icons/ri";
 import { FaPlus } from "react-icons/fa6";
+import { IoIosStar } from "react-icons/io";
+import { MdOutlineIosShare } from "react-icons/md";
 import img from "../Images/svgviewer-png-output (1).png";
 
 const HeroSection = () => {
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [isAppInstalled, setIsAppInstalled] = useState(false);
-  const [showPopup, setShowPopup] = useState(false);
-  const [isIosOrMac, setIsIosOrMac] = useState(false);
-  const [showPopupInstalled, setShowPopupInstalled] = useState(false);
+  const [deferredPrompt, setDeferredPrompt] = useState(null); // Store the deferred prompt
+  const [isAppInstalled, setIsAppInstalled] = useState(false); // Check if the app is already installed
+  const [showPopup, setShowPopup] = useState(false); // Control the iOS/macOS popup
+  const [isIosOrMac, setIsIosOrMac] = useState(false); // Check if the user is on iOS/macOS
+  const [showPopupInstalled, setShowPopupInstalled] = useState(false); // Control the installed popup
 
   useEffect(() => {
     const userAgent = navigator.userAgent.toLowerCase();
-    setIsIosOrMac(/iphone|ipod|ipad|macintosh/.test(userAgent));
 
-    const updateInstallStatus = () => {
-      const standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;
-      setIsAppInstalled(standalone);
-    };
+    // Detect if the user is on iOS or macOS (ignore Android, WebOS, or Windows)
+    if (/iphone|ipod|ipad/.test(userAgent) || /macintosh/.test(userAgent)) {
+      setIsIosOrMac(true);
+    }
 
-    updateInstallStatus(); // Check on component mount
+    // Detect if the app is already installed (for PWA)
+    if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+      setIsAppInstalled(true); // App is installed
+    }
 
+    // Listen for the beforeinstallprompt event (for Android, Windows, or desktop browsers)
     const handleBeforeInstallPrompt = (event) => {
       event.preventDefault();
-      setDeferredPrompt(event);
+      setDeferredPrompt(event); // Store the event for later use
     };
 
-    const handleAppInstalled = () => {
-      setIsAppInstalled(true);
-      setShowPopupInstalled(true); // Show popup after installation
-    };
+    // Handle the appinstalled event
+    window.addEventListener("appinstalled", () => {
+      console.log("PWA installed successfully!");
+      setIsAppInstalled(true); // Update state when app is installed
+      setShowPopupInstalled(true); // Show the installed popup
+    });
 
+    // Check for beforeinstallprompt event
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-    window.addEventListener("appinstalled", handleAppInstalled);
 
+    // Cleanup on unmount
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
-      window.removeEventListener("appinstalled", handleAppInstalled);
     };
   }, []);
 
   const handleInstallClick = async () => {
-    if (deferredPrompt) {
+    if (isAppInstalled) {
+      // If the app is already installed, show the installed popup
+      setShowPopupInstalled(true);
+    } else if (deferredPrompt) {
+      // If the app is not installed, show the install prompt
       deferredPrompt.prompt();
+
+      // Wait for the user's response
       const { outcome } = await deferredPrompt.userChoice;
+
       if (outcome === "accepted") {
         console.log("User accepted the install prompt");
-        setShowPopupInstalled(true);
+        setIsAppInstalled(true); // Set app as installed
+        setShowPopupInstalled(true); // Show the installed popup
+      } else {
+        console.log("User dismissed the install prompt");
       }
+
+      // Clear the deferred prompt
       setDeferredPrompt(null);
     }
+  };
+
+  const handleClosePopup = () => {
+    setShowPopup(false); // Close the popup when the user dismisses it
+  };
+
+  const handleClosePopupInstalled = () => {
+    setShowPopupInstalled(false); // Close the installed popup when the user dismisses it
   };
 
   return (
@@ -935,7 +961,7 @@ const HeroSection = () => {
             <div className="flex justify-between items-center p-4 border-b border-gray-700">
               <h2 className="text-lg font-semibold text-black">Add to Home Screen</h2>
               <button
-                onClick={() => setShowPopup(false)}
+                onClick={handleClosePopup} // Use handleClosePopup to close the modal
                 className="text-[--green-color] text-sm font-medium"
               >
                 Cancel
@@ -943,7 +969,7 @@ const HeroSection = () => {
             </div>
             <div className="p-4 space-y-4">
               <p className="text-gray-500 text-sm">
-                Add this website to your home screen for fullscreen and offline usage.
+                This website has app functionality. Add it to your home screen to use it in fullscreen and while offline.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-4">
@@ -951,7 +977,7 @@ const HeroSection = () => {
                     <MdOutlineIosShare className="w-6 h-6 text-[--green-color]" />
                   </div>
                   <p className="text-sm pt-1 text-gray-800">
-                    1) Tap the &apos;Share&apos; button below.
+                    1) Press the &apos;Share&apos; button on the menu bar below.
                   </p>
                 </div>
                 <div className="flex items-start gap-4">
@@ -959,7 +985,7 @@ const HeroSection = () => {
                     <FaPlus className="w-6 h-6 text-[--green-color]" />
                   </div>
                   <p className="text-sm pt-2 text-gray-800">
-                    2) Select &apos;Add to Home Screen&apos;.
+                    2) Press &apos;Add to Home Screen&apos;.
                   </p>
                 </div>
               </div>
@@ -968,55 +994,62 @@ const HeroSection = () => {
         </div>
       )}
 
-      {/* Popup for App Already Installed */}
+      {/* Popup for app already installed */}
       {showPopupInstalled && isAppInstalled && (
         <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4">
           <div className="bg-[#d6d4d5] rounded-2xl max-w-sm w-full shadow-lg">
             <div className="flex justify-between items-center p-4 border-b border-gray-700">
               <h2 className="text-lg font-semibold text-black">Application Already Installed</h2>
               <button
-                onClick={() => setShowPopupInstalled(false)}
+                onClick={handleClosePopupInstalled} // Close popup when user clicks cancel
                 className="text-[--green-color] text-sm font-medium"
               >
-                Cancel
+                Close
               </button>
+            </div>
+            <div className="p-4 text-center text-sm text-gray-800">
+              The app is successfully installed and can be accessed from your home screen.
             </div>
           </div>
         </div>
       )}
 
       <div className="grid lg:grid-cols-2 md:grid-cols-1 grid-cols-1 items-center">
-        <div className="max-w-lg mx-auto">
-          <h1 className="lg:text-5xl text-4xl font-bold leading-tight">
+        <div className="max-w-lg mx-auto order-2 lg:order-1 md:order-2">
+          <div className="lg:text-5xl text-4xl font-bold leading-tight">
             True crypto ownership.
-          </h1>
-          <h1 className="lg:text-5xl text-4xl font-bold leading-tight">
+          </div>
+          <div className="lg:text-5xl text-4xl font-bold leading-tight">
             Powerful Web3 experiences
-          </h1>
-          <p className="pt-5 text-lg">
+          </div>
+          <div className="pt-5 text-lg">
             Unlock the power of your cryptocurrency assets and explore the world of Web3 with Reivun.
-          </p>
+          </div>
+
+          {/* Conditional button for iOS/macOS or installed status */}
           <div className="py-5 pt-7">
             {isAppInstalled ? (
               <button
-                onClick={() => setShowPopupInstalled(true)}
-                className="text-[--main-color] border border-[--main-color] py-3 px-6 rounded-full flex items-center"
+                onClick={handleInstallClick} // Show the installed popup when clicked
+                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
               >
                 Installed&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
               </button>
             ) : isIosOrMac ? (
               <button
-                onClick={() => setShowPopup(true)}
-                className="text-[--main-color] border border-[--main-color] py-3 px-6 rounded-full flex items-center"
+                onClick={() => setShowPopup(true)} // Show the iOS/macOS popup when clicked
+                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
               >
-                Add to Home Screen&nbsp;
+                Install App&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
               </button>
             ) : (
+              // Show for Android, Windows, or other platforms where PWA installation is supported
               <button
+                id="install-button"
                 onClick={handleInstallClick}
-                className="text-[--main-color] border border-[--main-color] py-3 px-6 rounded-full flex items-center"
+                className="text-[--main-color] border border-[--main-color] py-3 px-6 hover:cursor-pointer rounded-full w-max hover:bg-[--main-color] hover:text-black transition-all duration-500 flex items-center"
               >
                 Install App&nbsp;
                 <RiArrowRightDoubleFill className="text-xl" />
@@ -1024,11 +1057,11 @@ const HeroSection = () => {
             )}
           </div>
         </div>
-        <div>
+        <div className="lg:mr-0 lg:ml-10 md:ml-0 ml-10 flex justify-center order-1 lg:order-2 md:order-1">
           <img
-            className="lg:w-[560px] md:w-[400px] w-[300px] mx-auto pt-14"
+            className="max-w-xs mx-auto lg:max-w-[380px] lg:mt-0 md:mt-0 mt-12"
             src={img}
-            alt="Crypto App"
+            alt="hero-img"
           />
         </div>
       </div>
@@ -1037,3 +1070,5 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
+
+
