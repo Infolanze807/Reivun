@@ -16,11 +16,11 @@
     {
       "src": "REIVUN.png",
       "type": "image/png",
-      "sizes": "600x600"
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#54ff8d"
+  "background_color": "#27272a"
 }

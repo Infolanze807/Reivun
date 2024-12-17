@@ -63,7 +63,7 @@ const Footer = () => {
 
             {/* for app status */}
       {showPopupInstalled && isAppInstalled && (
-        <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4">
+        <div className="fixed inset-0 bg-[#000c] flex items-end md:items-center justify-center p-4 z-50">
           <div className="bg-[#d6d4d5] rounded-2xl max-w-sm w-full shadow-lg">
             <div className="flex justify-between items-center p-4">
               <h2 className="text-lg font-semibold text-black"> Application already Installed</h2>

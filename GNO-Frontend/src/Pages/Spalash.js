@@ -3,7 +3,7 @@ import './splash.css'; // Optional: add custom styles for the splash screen
 
 const SplashScreen = ({ appName, logoSrc }) => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[--green-color]">
+    <div className="fixed inset-0 flex items-center justify-center bg-zinc-800">
       <div className="text-center">
         <div className="mb-8">
           <img
