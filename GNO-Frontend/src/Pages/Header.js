@@ -577,7 +577,7 @@ const Header = () => {
           <div className="lg:col-span-4 col-span-6">
             <a href="/" className="flex items-center grid-cols-3 space-x-3">
               <img
-                src={logo}
+                src={logo}g
                 className="md:w-16 w-12 rounded-full"
                 alt="Reivun Logo"
               />
@@ -661,6 +661,20 @@ const Header = () => {
                     </NavLink>
                   </li>
                   <li>
+                    <NavLink
+                      to="/bot"
+                      onClick={closeMenu}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "py-2 px-3 text-[--main-color] flex items-center gap-x-2 transition-colors duration-500"
+                          : "py-2 px-3 text-white hover:text-[--main-color] flex items-center gap-x-2 transition-colors duration-500"
+                      }
+                    >
+                      <MdPlayArrow className="lg:hidden" />
+                      Reivun Bot
+                    </NavLink>
+                  </li>
+                  <li>
                     <a
                       href="mailto:Leviathan5713@gmail.com"
                       onClick={closeMenu}
@@ -670,6 +684,7 @@ const Header = () => {
                       Contact
                     </a>
                   </li>
+                  
                   <li className="flex items-center gap-x-5">
                     <button
                       type="button"

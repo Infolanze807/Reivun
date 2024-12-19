@@ -25,6 +25,7 @@ import Swap from './Pages/Swap.js';
 import BrowserEXt from './Pages/BrowserExt.js';
 import FAQ from './Pages/FAQ.js';
 import ScrollTop from './Pages/ScrollTop.js';
+import Bitgetbot from './Pages/Bitgetbot.js';
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
         <Route path='/swap' element={<Swap/>}/>
         <Route path='/browser-extension' element={<BrowserEXt/>}/>
         <Route path='/faq' element={<FAQ/>}/>
+        <Route path='/bot' element={<Bitgetbot/>}/>
       </Routes>
       </AuthProvider>
       
