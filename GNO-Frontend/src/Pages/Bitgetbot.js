@@ -57,18 +57,31 @@ const Bitgetbot = () => {
     <div className="min-h-screen bg-[--bg-color] p-4">
     <div className="mx-auto max-w-7xl space-y-4">
       <header className="flex items-center justify-between">
-        <div className="flex items-center space-x-5">
+        {/* <div className="flex items-center space-x-5">
           <h1 className="text-3xl font-light text-[--green-color]">Reivun Bot</h1>
           <p className="text-gray-600 pt-1">Automatic analysis of crypto markets in real time</p>
         </div>
-        <a href='/' className='cursor-pointer'><img src={logo} alt="Logo" className="h-12 w-12 rounded-full" /></a>
+        <a href='/' className='cursor-pointer'><img src={logo} alt="Logo" className="h-12 w-12 rounded-full" /></a> */}
+        <div className="lg:col-span-4 col-span-6">
+                    <a href="/" className="flex items-center grid-cols-3 space-x-3">
+                      <img
+                        src={logo}g
+                        className="md:w-16 w-12 rounded-full"
+                        alt="Reivun Logo"
+                      />
+                      <span className="text-3xl font-semibold text-[--main-color]">
+                        Reivun Bot
+                      </span>
+                    </a>
+                  </div>
       </header>
 
-      <div className="grid gap-6 md:grid-cols-3 bg-white rounded-lg p-5">
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 bg-white rounded-lg p-5">
         <div className="p-2 lg:p-0 lg:px-3 rounded-full shadow flex items-center gap-2">
             <FiActivity className="text-lg" />
             <h3 className="text-sm">5 markets to watch</h3>
         </div>
+        <p className="text-gray-600 pt-1">Automatic analysis of crypto markets in real time</p>
         <div className="p-2 lg:p-0 lg:px-3 rounded-full shadow flex items-center gap-2">
           <BsStars className="text-lg" />
             <h3 className="text-sm"> Automatic analysis active</h3>

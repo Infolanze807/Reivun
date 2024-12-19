@@ -11,7 +11,7 @@ body{
     background-color: var(--bg-color);
 }
 :root{
-    --bg-color:#1b1b1c;
+    --bg-color:#1b1b1cg;
     --border-color:#2b2d31;
     --green-color:#22c55e;
     --input-color:#2a3038;
@@ -23,5 +23,5 @@ body{
 }
 img
 {
-  filter: invert(0);
+  filter: invert(0) !important;
 }
