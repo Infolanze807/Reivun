@@ -48,9 +48,9 @@ const wss = new WebSocket.Server({ noServer: true });
 const jsonFilePath = './symbols_data.json';
 
 // Bitget API configuration
-const apiKey = 'bg_b066dfb3a01d4524a96cc8498e515ef1';
-const apiSecret = '41a4cb094ff44339cfd6460bec9a6e21e6b366b246391927c9c0d6e3d20da9b3';
-const apiPassphrase = 'Reivun13';
+const apiKey = process.env.REACT_APP_APIKEY;
+const apiSecret = process.env.REACT_APP_SECRETKEY;
+const apiPassphrase = process.env.REACT_APP_PASS;
 
 // Create an exchange object for Bitget
 const exchange = new ccxt.bitget({
