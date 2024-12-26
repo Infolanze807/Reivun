@@ -72,7 +72,7 @@ const Bitgetbot = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("http://https://reivun-gkdi.vercel.app:5000/api/symbols");
+        const response = await axios.get("https://reivun-gkdi.vercel.app:5000/api/symbols");
         setSymbolsData(response.data);
         console.log(response.data, "get");
       } catch (error) {
