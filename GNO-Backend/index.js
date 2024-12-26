@@ -74,7 +74,7 @@ const cryptosToAnalyze = [
 app.use(express.json());
 
 const corsOptions = {
-  origin: process.env.REACT_APP_FRONTEND,
+  origin: process.env.REACT_APP_FRONTEND || 'https://reivun.vercel.app',
   optionsSuccessStatus: 200,
 };
 

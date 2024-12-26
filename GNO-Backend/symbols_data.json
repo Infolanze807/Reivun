@@ -2008,5 +2008,1010 @@
       "volume": 0,
       "isHammer": false
     }
+  },
+  {
+    "BTC/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 95620,
+      "high": 95620.01,
+      "low": 95586,
+      "close": 95592.7,
+      "volume": 1.857165,
+      "isHammer": false
+    },
+    "TAO/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 474.7,
+      "high": 474.8,
+      "low": 474.3,
+      "close": 474.5,
+      "volume": 10.642,
+      "isHammer": false
+    },
+    "ETH/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 3352.24,
+      "high": 3353.33,
+      "low": 3351.8,
+      "close": 3351.81,
+      "volume": 110.9936,
+      "isHammer": false
+    },
+    "XRP/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 2.1703,
+      "high": 2.1713,
+      "low": 2.17,
+      "close": 2.1703,
+      "volume": 36547.5634,
+      "isHammer": false
+    },
+    "SHIB/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.0000217,
+      "high": 0.00002171,
+      "low": 0.0000217,
+      "close": 0.0000217,
+      "volume": 124138880.2395,
+      "isHammer": false
+    },
+    "PEPE/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.00001738,
+      "high": 0.00001739,
+      "low": 0.00001735,
+      "close": 0.00001735,
+      "volume": 192651152,
+      "isHammer": false
+    },
+    "SOL/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 188.95,
+      "high": 188.96,
+      "low": 188.7,
+      "close": 188.72,
+      "volume": 193.7248,
+      "isHammer": false
+    },
+    "BGB/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 7.2591,
+      "high": 7.2929,
+      "low": 7.2498,
+      "close": 7.2503,
+      "volume": 98945.8288,
+      "isHammer": false
+    },
+    "ADA/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.869,
+      "high": 0.8696,
+      "low": 0.8685,
+      "close": 0.8689,
+      "volume": 11564.135,
+      "isHammer": false
+    },
+    "SUI/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 4.2678,
+      "high": 4.2685,
+      "low": 4.2616,
+      "close": 4.2633,
+      "volume": 808.63,
+      "isHammer": false
+    },
+    "SEI/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.4277,
+      "high": 0.428,
+      "low": 0.4273,
+      "close": 0.4274,
+      "volume": 5628.72,
+      "isHammer": false
+    },
+    "DOGE/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.31622,
+      "high": 0.3164,
+      "low": 0.31604,
+      "close": 0.31611,
+      "volume": 83805.4588,
+      "isHammer": false
+    },
+    "FIL/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 5.019,
+      "high": 5.02,
+      "low": 5.013,
+      "close": 5.014,
+      "volume": 515.887,
+      "isHammer": false
+    },
+    "LTC/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 103.17,
+      "high": 103.22,
+      "low": 103.14,
+      "close": 103.17,
+      "volume": 31.0742,
+      "isHammer": false
+    },
+    "LINK/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 22.9,
+      "high": 22.92,
+      "low": 22.9,
+      "close": 22.91,
+      "volume": 295.6108,
+      "isHammer": false
+    },
+    "FET/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 1.276,
+      "high": 1.276,
+      "low": 1.276,
+      "close": 1.276,
+      "volume": 3,
+      "isHammer": false
+    },
+    "PEAQ/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.5253,
+      "high": 0.5255,
+      "low": 0.5248,
+      "close": 0.5253,
+      "volume": 45422.57,
+      "isHammer": false
+    },
+    "TON/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 5.716,
+      "high": 5.72,
+      "low": 5.716,
+      "close": 5.717,
+      "volume": 866.26,
+      "isHammer": false
+    },
+    "APE/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 1.182,
+      "high": 1.183,
+      "low": 1.18,
+      "close": 1.18,
+      "volume": 1106.776,
+      "isHammer": false
+    },
+    "AVAX/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 37.72,
+      "high": 37.74,
+      "low": 37.71,
+      "close": 37.74,
+      "volume": 40.8307,
+      "isHammer": false
+    },
+    "ARB/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.754,
+      "high": 0.754,
+      "low": 0.753,
+      "close": 0.753,
+      "volume": 195.43,
+      "isHammer": false
+    },
+    "TIA/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 4.896,
+      "high": 4.897,
+      "low": 4.892,
+      "close": 4.892,
+      "volume": 290,
+      "isHammer": false
+    },
+    "NEAR/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 5.109,
+      "high": 5.111,
+      "low": 5.106,
+      "close": 5.107,
+      "volume": 554.57,
+      "isHammer": false
+    },
+    "KAS/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.113,
+      "high": 0.1131,
+      "low": 0.1128,
+      "close": 0.1128,
+      "volume": 33917,
+      "isHammer": false
+    },
+    "APT/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 8.94,
+      "high": 8.94,
+      "low": 8.93,
+      "close": 8.93,
+      "volume": 120.38,
+      "isHammer": false
+    },
+    "ATOM/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 6.537,
+      "high": 6.538,
+      "low": 6.532,
+      "close": 6.534,
+      "volume": 133.454,
+      "isHammer": false
+    },
+    "RENDER/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 7.19,
+      "high": 7.191,
+      "low": 7.184,
+      "close": 7.184,
+      "volume": 167.51,
+      "isHammer": false
+    },
+    "STX/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 1.575,
+      "high": 1.576,
+      "low": 1.574,
+      "close": 1.574,
+      "volume": 2807,
+      "isHammer": false
+    },
+    "INJ/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 21.26,
+      "high": 21.26,
+      "low": 21.26,
+      "close": 21.26,
+      "volume": 0,
+      "isHammer": false
+    },
+    "FTM/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.907,
+      "high": 0.9075,
+      "low": 0.9064,
+      "close": 0.9067,
+      "volume": 1446,
+      "isHammer": false
+    },
+    "JASMY/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.0366,
+      "high": 0.03663,
+      "low": 0.03655,
+      "close": 0.03656,
+      "volume": 85701.5494,
+      "isHammer": false
+    },
+    "BNB/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 683.2,
+      "high": 683.2,
+      "low": 683,
+      "close": 683,
+      "volume": 0.3633,
+      "isHammer": false
+    },
+    "1INCH/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.39,
+      "high": 0.3902,
+      "low": 0.3899,
+      "close": 0.3899,
+      "volume": 897.217,
+      "isHammer": false
+    },
+    "BONK/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.00003133,
+      "high": 0.00003136,
+      "low": 0.00003127,
+      "close": 0.00003128,
+      "volume": 152732364,
+      "isHammer": false
+    },
+    "SUSHI/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 1.456,
+      "high": 1.457,
+      "low": 1.454,
+      "close": 1.455,
+      "volume": 481.8038,
+      "isHammer": false
+    },
+    "ROSE/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.08152,
+      "high": 0.0816,
+      "low": 0.08151,
+      "close": 0.08152,
+      "volume": 1153.1,
+      "isHammer": false
+    },
+    "AERO/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 1.519,
+      "high": 1.519,
+      "low": 1.519,
+      "close": 1.519,
+      "volume": 0,
+      "isHammer": false
+    }
+  },
+  {
+    "BTC/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 95620,
+      "high": 95620.01,
+      "low": 95586,
+      "close": 95603.99,
+      "volume": 3.031068,
+      "isHammer": false
+    },
+    "TAO/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 474.7,
+      "high": 474.8,
+      "low": 474.2,
+      "close": 474.2,
+      "volume": 26.7,
+      "isHammer": false
+    },
+    "ETH/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 3352.24,
+      "high": 3353.33,
+      "low": 3351.8,
+      "close": 3352.16,
+      "volume": 189.2047,
+      "isHammer": false
+    },
+    "XRP/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 2.1703,
+      "high": 2.1721,
+      "low": 2.17,
+      "close": 2.1721,
+      "volume": 95335.8622,
+      "isHammer": false
+    },
+    "SHIB/USDT": {
+      "timestamp": "2024-12-26 18:32:00",
+      "open": 0.0000217,
+      "high": 0.00002171,
+      "low": 0.00002169,
+      "close": 0.00002171,
+      "volume": 214360574.608,
+      "isHammer": false
+    },
+    "PEPE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.00001737,
+      "high": 0.00001739,
+      "low": 0.00001737,
+      "close": 0.00001739,
+      "volume": 4140428,
+      "isHammer": false
+    },
+    "SOL/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 188.85,
+      "high": 188.85,
+      "low": 188.84,
+      "close": 188.84,
+      "volume": 5.2495,
+      "isHammer": false
+    },
+    "BGB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 7.2638,
+      "high": 7.2694,
+      "low": 7.2595,
+      "close": 7.2597,
+      "volume": 6427.0156,
+      "isHammer": false
+    },
+    "ADA/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.8698,
+      "high": 0.8698,
+      "low": 0.8698,
+      "close": 0.8698,
+      "volume": 0,
+      "isHammer": false
+    },
+    "SUI/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 4.2679,
+      "high": 4.2696,
+      "low": 4.2679,
+      "close": 4.2696,
+      "volume": 23.43,
+      "isHammer": false
+    },
+    "SEI/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.428,
+      "high": 0.428,
+      "low": 0.428,
+      "close": 0.428,
+      "volume": 11.69,
+      "isHammer": false
+    },
+    "DOGE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.31647,
+      "high": 0.31649,
+      "low": 0.31647,
+      "close": 0.31649,
+      "volume": 315.9857,
+      "isHammer": false
+    },
+    "FIL/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 5.014,
+      "high": 5.014,
+      "low": 5.014,
+      "close": 5.014,
+      "volume": 0,
+      "isHammer": false
+    },
+    "LTC/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 103.28,
+      "high": 103.28,
+      "low": 103.28,
+      "close": 103.28,
+      "volume": 2.835,
+      "isHammer": false
+    },
+    "LINK/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 22.92,
+      "high": 22.93,
+      "low": 22.92,
+      "close": 22.93,
+      "volume": 44.42,
+      "isHammer": false
+    },
+    "FET/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.276,
+      "high": 1.276,
+      "low": 1.276,
+      "close": 1.276,
+      "volume": 0,
+      "isHammer": false
+    },
+    "PEAQ/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.5252,
+      "high": 0.5252,
+      "low": 0.5252,
+      "close": 0.5252,
+      "volume": 0,
+      "isHammer": false
+    },
+    "TON/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 5.721,
+      "high": 5.721,
+      "low": 5.721,
+      "close": 5.721,
+      "volume": 0,
+      "isHammer": false
+    },
+    "APE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.182,
+      "high": 1.183,
+      "low": 1.182,
+      "close": 1.183,
+      "volume": 104.8,
+      "isHammer": false
+    },
+    "AVAX/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 37.76,
+      "high": 37.77,
+      "low": 37.76,
+      "close": 37.76,
+      "volume": 21.1136,
+      "isHammer": false
+    },
+    "ARB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.753,
+      "high": 0.755,
+      "low": 0.753,
+      "close": 0.755,
+      "volume": 26.23,
+      "isHammer": false
+    },
+    "TIA/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 4.899,
+      "high": 4.9,
+      "low": 4.899,
+      "close": 4.9,
+      "volume": 78,
+      "isHammer": false
+    },
+    "NEAR/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 5.108,
+      "high": 5.114,
+      "low": 5.108,
+      "close": 5.114,
+      "volume": 140,
+      "isHammer": false
+    },
+    "KAS/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.1129,
+      "high": 0.1132,
+      "low": 0.1129,
+      "close": 0.1132,
+      "volume": 4691,
+      "isHammer": false
+    },
+    "APT/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 8.94,
+      "high": 8.94,
+      "low": 8.94,
+      "close": 8.94,
+      "volume": 0,
+      "isHammer": false
+    },
+    "ATOM/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 6.538,
+      "high": 6.541,
+      "low": 6.538,
+      "close": 6.541,
+      "volume": 39.4602,
+      "isHammer": false
+    },
+    "RENDER/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 7.184,
+      "high": 7.184,
+      "low": 7.184,
+      "close": 7.184,
+      "volume": 0,
+      "isHammer": false
+    },
+    "STX/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.575,
+      "high": 1.577,
+      "low": 1.575,
+      "close": 1.577,
+      "volume": 110,
+      "isHammer": false
+    },
+    "INJ/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 21.26,
+      "high": 21.26,
+      "low": 21.26,
+      "close": 21.26,
+      "volume": 0,
+      "isHammer": false
+    },
+    "FTM/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.9078,
+      "high": 0.9082,
+      "low": 0.9078,
+      "close": 0.9082,
+      "volume": 287,
+      "isHammer": false
+    },
+    "JASMY/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.03656,
+      "high": 0.03661,
+      "low": 0.03656,
+      "close": 0.03661,
+      "volume": 2735.2297,
+      "isHammer": false
+    },
+    "BNB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 684.1,
+      "high": 684.1,
+      "low": 683.9,
+      "close": 683.9,
+      "volume": 0.1461,
+      "isHammer": false
+    },
+    "1INCH/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.3902,
+      "high": 0.3902,
+      "low": 0.3902,
+      "close": 0.3902,
+      "volume": 0,
+      "isHammer": false
+    },
+    "BONK/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.00003133,
+      "high": 0.00003133,
+      "low": 0.0000313,
+      "close": 0.0000313,
+      "volume": 20680816,
+      "isHammer": false
+    },
+    "SUSHI/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.456,
+      "high": 1.458,
+      "low": 1.456,
+      "close": 1.457,
+      "volume": 167.724,
+      "isHammer": false
+    },
+    "ROSE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.08154,
+      "high": 0.08157,
+      "low": 0.08151,
+      "close": 0.08151,
+      "volume": 245.16,
+      "isHammer": false
+    },
+    "AERO/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.515,
+      "high": 1.516,
+      "low": 1.515,
+      "close": 1.516,
+      "volume": 3.31,
+      "isHammer": false
+    }
+  },
+  {
+    "BTC/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 95603.99,
+      "high": 95614.94,
+      "low": 95592.71,
+      "close": 95612,
+      "volume": 0.813743,
+      "isHammer": false
+    },
+    "TAO/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 474.2,
+      "high": 474.8,
+      "low": 474.2,
+      "close": 474.7,
+      "volume": 0.42,
+      "isHammer": false
+    },
+    "ETH/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 3352.16,
+      "high": 3353.8,
+      "low": 3351.61,
+      "close": 3353.44,
+      "volume": 89.4256,
+      "isHammer": false
+    },
+    "XRP/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 2.1721,
+      "high": 2.1759,
+      "low": 2.1721,
+      "close": 2.1752,
+      "volume": 27428.6804,
+      "isHammer": false
+    },
+    "SHIB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.00002171,
+      "high": 0.00002173,
+      "low": 0.0000217,
+      "close": 0.00002172,
+      "volume": 150179209.8219,
+      "isHammer": false
+    },
+    "PEPE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.00001737,
+      "high": 0.00001739,
+      "low": 0.00001736,
+      "close": 0.00001738,
+      "volume": 66426625,
+      "isHammer": false
+    },
+    "SOL/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 188.85,
+      "high": 188.88,
+      "low": 188.76,
+      "close": 188.85,
+      "volume": 131.9791,
+      "isHammer": false
+    },
+    "BGB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 7.2638,
+      "high": 7.272,
+      "low": 7.24,
+      "close": 7.2707,
+      "volume": 174834.6626,
+      "isHammer": false
+    },
+    "ADA/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.8698,
+      "high": 0.8703,
+      "low": 0.8693,
+      "close": 0.8701,
+      "volume": 9703.203,
+      "isHammer": false
+    },
+    "SUI/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 4.2679,
+      "high": 4.2701,
+      "low": 4.2653,
+      "close": 4.2673,
+      "volume": 774.85,
+      "isHammer": false
+    },
+    "SEI/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.428,
+      "high": 0.4282,
+      "low": 0.4276,
+      "close": 0.428,
+      "volume": 5512.31,
+      "isHammer": false
+    },
+    "DOGE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.31647,
+      "high": 0.31659,
+      "low": 0.31633,
+      "close": 0.31659,
+      "volume": 52349.5449,
+      "isHammer": false
+    },
+    "FIL/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 5.014,
+      "high": 5.023,
+      "low": 5.014,
+      "close": 5.023,
+      "volume": 1526.7,
+      "isHammer": false
+    },
+    "LTC/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 103.28,
+      "high": 103.34,
+      "low": 103.23,
+      "close": 103.33,
+      "volume": 18.5569,
+      "isHammer": false
+    },
+    "LINK/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 22.92,
+      "high": 22.96,
+      "low": 22.92,
+      "close": 22.96,
+      "volume": 381.9442,
+      "isHammer": false
+    },
+    "FET/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.276,
+      "high": 1.277,
+      "low": 1.276,
+      "close": 1.277,
+      "volume": 7,
+      "isHammer": false
+    },
+    "PEAQ/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.5252,
+      "high": 0.5254,
+      "low": 0.5249,
+      "close": 0.5253,
+      "volume": 14843.59,
+      "isHammer": false
+    },
+    "TON/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 5.721,
+      "high": 5.724,
+      "low": 5.721,
+      "close": 5.724,
+      "volume": 1558.49,
+      "isHammer": false
+    },
+    "APE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.182,
+      "high": 1.183,
+      "low": 1.181,
+      "close": 1.182,
+      "volume": 780.7655,
+      "isHammer": false
+    },
+    "AVAX/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 37.76,
+      "high": 37.78,
+      "low": 37.74,
+      "close": 37.78,
+      "volume": 170.1729,
+      "isHammer": false
+    },
+    "ARB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.753,
+      "high": 0.755,
+      "low": 0.753,
+      "close": 0.755,
+      "volume": 29.23,
+      "isHammer": false
+    },
+    "TIA/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 4.899,
+      "high": 4.903,
+      "low": 4.896,
+      "close": 4.903,
+      "volume": 281.8,
+      "isHammer": false
+    },
+    "NEAR/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 5.108,
+      "high": 5.117,
+      "low": 5.108,
+      "close": 5.115,
+      "volume": 412.13,
+      "isHammer": false
+    },
+    "KAS/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.1129,
+      "high": 0.1132,
+      "low": 0.1129,
+      "close": 0.1131,
+      "volume": 59570,
+      "isHammer": false
+    },
+    "APT/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 8.94,
+      "high": 8.94,
+      "low": 8.92,
+      "close": 8.93,
+      "volume": 271.56,
+      "isHammer": false
+    },
+    "ATOM/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 6.538,
+      "high": 6.544,
+      "low": 6.538,
+      "close": 6.543,
+      "volume": 204.3146,
+      "isHammer": false
+    },
+    "RENDER/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 7.184,
+      "high": 7.192,
+      "low": 7.184,
+      "close": 7.192,
+      "volume": 73.95,
+      "isHammer": false
+    },
+    "STX/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.575,
+      "high": 1.577,
+      "low": 1.574,
+      "close": 1.577,
+      "volume": 579,
+      "isHammer": false
+    },
+    "INJ/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 21.26,
+      "high": 21.28,
+      "low": 21.26,
+      "close": 21.28,
+      "volume": 3,
+      "isHammer": false
+    },
+    "FTM/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.9078,
+      "high": 0.9085,
+      "low": 0.9075,
+      "close": 0.9082,
+      "volume": 1905,
+      "isHammer": false
+    },
+    "JASMY/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.03656,
+      "high": 0.03663,
+      "low": 0.03656,
+      "close": 0.03658,
+      "volume": 22488.7238,
+      "isHammer": false
+    },
+    "BNB/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 684.1,
+      "high": 687,
+      "low": 683.9,
+      "close": 686.5,
+      "volume": 151.7831,
+      "isHammer": false
+    },
+    "1INCH/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.3902,
+      "high": 0.3902,
+      "low": 0.3898,
+      "close": 0.3902,
+      "volume": 616.6998,
+      "isHammer": false
+    },
+    "BONK/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.00003133,
+      "high": 0.00003133,
+      "low": 0.00003127,
+      "close": 0.00003128,
+      "volume": 127820854,
+      "isHammer": false
+    },
+    "SUSHI/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.456,
+      "high": 1.459,
+      "low": 1.456,
+      "close": 1.457,
+      "volume": 392.425,
+      "isHammer": false
+    },
+    "ROSE/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 0.08154,
+      "high": 0.08163,
+      "low": 0.08151,
+      "close": 0.08163,
+      "volume": 2954.31,
+      "isHammer": false
+    },
+    "AERO/USDT": {
+      "timestamp": "2024-12-26 18:33:00",
+      "open": 1.515,
+      "high": 1.516,
+      "low": 1.515,
+      "close": 1.516,
+      "volume": 21.23,
+      "isHammer": false
+    }
   }
 ]
