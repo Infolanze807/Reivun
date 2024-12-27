@@ -318,42 +318,42 @@ async function getAllSymbolData() {
   return allData;
 }
 
-function storeDataInJson(data) {
-  let existingData = [];
+// function storeDataInJson(data) {
+//   let existingData = [];
 
-  if (fs.existsSync(jsonFilePath)) {
-    try {
-      const fileContent = fs.readFileSync(jsonFilePath, 'utf-8');
-      existingData = JSON.parse(fileContent);
-      if (!Array.isArray(existingData)) {
-        console.warn("JSON file content is not an array. Reinitializing...");
-        existingData = [];
-      }
-    } catch (error) {
-      console.error("Error reading or parsing JSON file. Reinitializing...", error.message);
-      existingData = [];
-    }
-  }
+//   if (fs.existsSync(jsonFilePath)) {
+//     try {
+//       const fileContent = fs.readFileSync(jsonFilePath, 'utf-8');
+//       existingData = JSON.parse(fileContent);
+//       if (!Array.isArray(existingData)) {
+//         console.warn("JSON file content is not an array. Reinitializing...");
+//         existingData = [];
+//       }
+//     } catch (error) {
+//       console.error("Error reading or parsing JSON file. Reinitializing...", error.message);
+//       existingData = [];
+//     }
+//   }
 
-  existingData.push(data);
+//   existingData.push(data);
 
-  try {
-    fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
-    console.log("Data successfully appended to JSON file.");
-  } catch (error) {
-    console.error("Error writing to JSON file:", error.message);
-  }
-}
+//   try {
+//     fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
+//     console.log("Data successfully appended to JSON file.");
+//   } catch (error) {
+//     console.error("Error writing to JSON file:", error.message);
+//   }
+// }
 
-async function logAndStoreData() {
-  try {
-    const allData = await getAllSymbolData();
-    console.log("Fetched Data:", allData);
-    storeDataInJson(allData);
-  } catch (error) {
-    console.error("Error during data logging and storing:", error.message);
-  }
-}
+// async function logAndStoreData() {
+//   try {
+//     const allData = await getAllSymbolData();
+//     console.log("Fetched Data:", allData);
+//     storeDataInJson(allData);
+//   } catch (error) {
+//     console.error("Error during data logging and storing:", error.message);
+//   }
+// }
 
 app.get('/symbols', async (req, res) => {
   try {
