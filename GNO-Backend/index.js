@@ -430,7 +430,6 @@ const exchange = new ccxt.bitget({
   password: apiPassphrase,
 });
 
-// Bot settings
 const timeframe = '1m';
 const cryptosToAnalyze = [
   'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
@@ -457,7 +456,6 @@ app.use('/', walletRoutes);
 app.use('/', exchangeRoutes);
 app.use('/', transactionRoutes);
 
-// Test connection to Bitget
 async function testConnection() {
   try {
     const balance = await exchange.fetchBalance();
@@ -525,7 +523,6 @@ app.get('/symbols', async (req, res) => {
   }
 });
 
-// Create the HTTP server
 const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
@@ -533,26 +530,26 @@ const server = app.listen(port, () => {
 // Integrate Socket.IO with the server
 const io = socketIO(server, {
   cors: {
-    origin: 'https://reivun.vercel.app', // Allow this frontend URL
+    origin: 'https://reivun.vercel.app',
     methods: ['GET', 'POST'],
-    credentials: true // Allow credentials if required
+    credentials: true
   },
-  transports: ['websocket', 'polling'] // Enable both transports
+  transports: ['websocket', 'polling']
 });
+
+let interval; // Store interval to clear later
 
 io.on('connection', (socket) => {
   console.log('New client connected');
 
-  // Send the data every 6 seconds to all connected clients
-  const interval = setIntervalAsync(async () => {
+  interval = setIntervalAsync(async () => {
     const allData = await getAllSymbolData();
-    socket.emit('symbolData', allData);  // Emit the data to the client
+    socket.emit('symbolData', allData);
   }, 6000);
 
-  // Cleanup when the client disconnects
   socket.on('disconnect', () => {
     console.log('Client disconnected');
-    clearInterval(interval);
+    clearInterval(interval); // Clear interval when client disconnects
   });
 });
 
@@ -561,3 +558,14 @@ io.on('connection', (socket) => {
   await testConnection();
   setIntervalAsync(logAndStoreData, 6000);
 })();
+
+// Gracefully shutdown server and cleanup intervals
+process.on('SIGINT', () => {
+  console.log('Server shutting down...');
+  clearInterval(interval); // Clear the interval when shutting down
+  mongoose.disconnect(); // Disconnect from MongoDB if needed
+  server.close(() => {
+    console.log('Server has stopped.');
+    process.exit(0);
+  });
+});
