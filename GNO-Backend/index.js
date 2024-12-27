@@ -193,7 +193,7 @@ async function logAndStoreData() {
   }
 }
 
-app.get('/api/symbols', async (req, res) => {
+app.get('/symbols', async (req, res) => {
   try {
     const allData = await getAllSymbolData();
     res.json(allData);
