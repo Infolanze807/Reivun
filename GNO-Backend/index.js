@@ -239,7 +239,6 @@ const exchange = new ccxt.bitget({
   apiKey: apiKey,
   secret: apiSecret,
   password: apiPassphrase,
-  timeout: 30000,
 });
 
 // Bot settings
