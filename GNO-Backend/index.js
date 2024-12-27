@@ -57,6 +57,7 @@ const exchange = new ccxt.bitget({
   apiKey: apiKey,
   secret: apiSecret,
   password: apiPassphrase,
+  timeout: 30000,
 });
 
 // Bot settings
@@ -185,26 +186,29 @@ app.get('/symbols', async (req, res) => {
 wss.on('connection', (ws) => {
   const sendData = async () => {
     const allData = await getAllSymbolData();
-    ws.send(JSON.stringify(allData));
+    ws.send(JSON.stringify(allData));  // Sending data to the WebSocket client
   };
 
+  // Send data every 6 seconds
   const interval = setIntervalAsync(() => {
     sendData();
   }, 6000);
 
+  // Cleanup when connection is closed
   ws.on('close', () => {
     clearInterval(interval);
   });
 });
 
-app.server = app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
-
+// WebSocket upgrade handling
 app.server.on('upgrade', (request, socket, head) => {
   wss.handleUpgrade(request, socket, head, (ws) => {
     wss.emit('connection', ws, request);
   });
+});
+
+app.server = app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
 
 (async () => {

@@ -106,6 +106,7 @@ const Bitgetbot = () => {
   //   };
   // }, []);
   useEffect(() => {
+    // Fetch symbols data from API
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -118,15 +119,16 @@ const Bitgetbot = () => {
         setLoading(false);
       }
     };
-  
+
     fetchData();
-  
-    const socket = new WebSocket("https://reivun-gkdi.vercel.app");
-    
+
+    // WebSocket connection setup
+    const socket = new WebSocket("wss://reivun-gkdi.vercel.app"); // Correct WebSocket URL
+
     socket.onopen = () => {
       console.log("WebSocket connection established.");
     };
-  
+
     socket.onmessage = (event) => {
       setIsSocketLoading(true);
       try {
@@ -143,19 +145,21 @@ const Bitgetbot = () => {
       }
       setIsSocketLoading(false);
     };
-  
+
     socket.onerror = (error) => {
       console.error("WebSocket error:", error);
     };
-  
+
     socket.onclose = () => {
       console.log("WebSocket connection closed.");
     };
-  
+
+    // Cleanup on component unmount
     return () => {
       socket.close();
     };
-  }, []);
+  }, []); // Empty dependency array means this effect runs once after the first render
+
   
   return (
     <div className="min-h-screen bg-[--bg-color] p-4">
