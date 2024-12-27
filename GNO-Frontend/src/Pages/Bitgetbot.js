@@ -68,8 +68,8 @@ const Bitgetbot = () => {
         }
       }
     };
+  
     useEffect(() => {
-      // Fetch symbols data from API
       const fetchData = async () => {
         setLoading(true);
         try {
@@ -87,10 +87,13 @@ const Bitgetbot = () => {
   
       // Initialize socket.io client for real-time updates
       const socket = io("https://reivun-gkdi.vercel.app");
+  
+      // Connection established
       socket.on("connect", () => {
         console.log("Socket connected!");
       });
   
+      // Handle update event from the server
       socket.on("update", (data) => {
         setIsSocketLoading(true);
         try {
@@ -98,7 +101,10 @@ const Bitgetbot = () => {
           setSymbolsData((prevData) => {
             if (Array.isArray(prevData)) {
               // Replace or append updated symbol data
-              return [...prevData.filter((item) => item.symbol !== data.symbol), data];
+              return [
+                ...prevData.filter((item) => item.symbol !== data.symbol),
+                data,
+              ];
             }
             return [data];
           });
@@ -108,6 +114,7 @@ const Bitgetbot = () => {
         setIsSocketLoading(false);
       });
   
+      // Handle socket disconnection
       socket.on("disconnect", () => {
         console.log("Socket disconnected");
       });
@@ -116,46 +123,7 @@ const Bitgetbot = () => {
       return () => {
         socket.close();
       };
-    }, []); // This effect will run only once on mount
-  
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const response = await axios.get("https://reivun-gkdi.vercel.app:5000/api/symbols");
-  //       setSymbolsData(response.data);
-  //       console.log(response.data, "get");
-  //     } catch (error) {
-  //       console.error("Error fetching data from API", error);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   fetchData();
-
-  //   const socket = new WebSocket("wss://reivun-gkdi.vercel.app");
-  //   socket.onmessage = (event) => {
-  //     setIsSocketLoading(true);
-  //     const data = JSON.parse(event.data);
-
-  //     setSymbolsData((prevData) => {
-  //       // Ensure prevData is always an array
-  //       if (Array.isArray(prevData)) {
-  //         return [data, ...prevData]; // Add new data at the beginning of the array
-  //       } else {
-  //         return [data]; // If prevData is not an array, return a new array with data
-  //       }
-  //     });
-
-  //     setIsSocketLoading(false);
-  //   };
-
-  //   return () => {
-  //     socket.close();
-  //   };
-  // }, []);
-// Empty dependency array means this effect runs once after the first render
+    }, []); //
 
   
   return (
