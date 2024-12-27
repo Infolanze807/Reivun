@@ -47,7 +47,7 @@ const Bitgetbot = () => {
         if (config.demoMode) {
           setLoading(true);
           try {
-            const response = await axios.get("http://localhost:5000/api/symbols", {
+            const response = await axios.get("https://reivun-gkdi.vercel.app/api/symbols", {
               headers: {
                 "API-Key": credentials.apiKey,
                 "Secret-Key": credentials.secretKey,
@@ -68,11 +68,48 @@ const Bitgetbot = () => {
       }
     };
   
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const response = await axios.get("https://reivun-gkdi.vercel.app:5000/api/symbols");
+  //       setSymbolsData(response.data);
+  //       console.log(response.data, "get");
+  //     } catch (error) {
+  //       console.error("Error fetching data from API", error);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   fetchData();
+
+  //   const socket = new WebSocket("wss://reivun-gkdi.vercel.app");
+  //   socket.onmessage = (event) => {
+  //     setIsSocketLoading(true);
+  //     const data = JSON.parse(event.data);
+
+  //     setSymbolsData((prevData) => {
+  //       // Ensure prevData is always an array
+  //       if (Array.isArray(prevData)) {
+  //         return [data, ...prevData]; // Add new data at the beginning of the array
+  //       } else {
+  //         return [data]; // If prevData is not an array, return a new array with data
+  //       }
+  //     });
+
+  //     setIsSocketLoading(false);
+  //   };
+
+  //   return () => {
+  //     socket.close();
+  //   };
+  // }, []);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://reivun-gkdi.vercel.app:5000/api/symbols");
+        const response = await axios.get("https://reivun-gkdi.vercel.app/api/symbols");
         setSymbolsData(response.data);
         console.log(response.data, "get");
       } catch (error) {
@@ -81,31 +118,45 @@ const Bitgetbot = () => {
         setLoading(false);
       }
     };
-
+  
     fetchData();
-
+  
     const socket = new WebSocket("wss://reivun-gkdi.vercel.app");
+    
+    socket.onopen = () => {
+      console.log("WebSocket connection established.");
+    };
+  
     socket.onmessage = (event) => {
       setIsSocketLoading(true);
-      const data = JSON.parse(event.data);
-
-      setSymbolsData((prevData) => {
-        // Ensure prevData is always an array
-        if (Array.isArray(prevData)) {
-          return [data, ...prevData]; // Add new data at the beginning of the array
-        } else {
-          return [data]; // If prevData is not an array, return a new array with data
-        }
-      });
-
+      try {
+        const data = JSON.parse(event.data);
+        setSymbolsData((prevData) => {
+          if (Array.isArray(prevData)) {
+            // Replace or append updated symbol data
+            return [...prevData.filter((item) => item.symbol !== data.symbol), data];
+          }
+          return [data];
+        });
+      } catch (error) {
+        console.error("Error parsing WebSocket data:", error);
+      }
       setIsSocketLoading(false);
     };
-
+  
+    socket.onerror = (error) => {
+      console.error("WebSocket error:", error);
+    };
+  
+    socket.onclose = () => {
+      console.log("WebSocket connection closed.");
+    };
+  
     return () => {
       socket.close();
     };
   }, []);
-
+  
   return (
     <div className="min-h-screen bg-[--bg-color] p-4">
       <div className="mx-auto max-w-7xl space-y-4">
