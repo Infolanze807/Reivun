@@ -84,7 +84,7 @@ const Bitgetbot = () => {
 
     fetchData();
 
-    const socket = new WebSocket("ws://https://reivun-gkdi.vercel.app:5000");
+    const socket = new WebSocket("wss://reivun-gkdi.vercel.app");
     socket.onmessage = (event) => {
       setIsSocketLoading(true);
       const data = JSON.parse(event.data);
