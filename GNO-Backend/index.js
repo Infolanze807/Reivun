@@ -369,14 +369,15 @@ const server = app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
 
+
 // Integrate Socket.IO with the server
 const io = socketIO(server, {
   cors: {
-    origin: 'https://reivun.vercel.app',  // The frontend domain
+    origin: 'https://reivun.vercel.app', // Allow this frontend URL
     methods: ['GET', 'POST'],
-    allowedHeaders: ['Content-Type'],
-    credentials: true
-  }
+    credentials: true // Allow credentials if required
+  },
+  transports: ['websocket', 'polling'] // Enable both transports
 });
 
 io.on('connection', (socket) => {
