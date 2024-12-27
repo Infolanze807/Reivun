@@ -47,7 +47,7 @@ const Bitgetbot = () => {
         if (config.demoMode) {
           setLoading(true);
           try {
-            const response = await axios.get("https://reivun-gkdi.vercel.app/api/symbols", {
+            const response = await axios.get("https://reivun-gkdi.vercel.app/symbols", {
               headers: {
                 "API-Key": credentials.apiKey,
                 "Secret-Key": credentials.secretKey,
@@ -109,7 +109,7 @@ const Bitgetbot = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get("https://reivun-gkdi.vercel.app/api/symbols");
+        const response = await axios.get("https://reivun-gkdi.vercel.app/symbols");
         setSymbolsData(response.data);
         console.log(response.data, "get");
       } catch (error) {
@@ -121,7 +121,7 @@ const Bitgetbot = () => {
   
     fetchData();
   
-    const socket = new WebSocket("wss://reivun-gkdi.vercel.app");
+    const socket = new WebSocket("https://reivun-gkdi.vercel.app");
     
     socket.onopen = () => {
       console.log("WebSocket connection established.");
