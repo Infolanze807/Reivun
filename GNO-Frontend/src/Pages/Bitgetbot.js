@@ -3,6 +3,7 @@ import axios from "axios";
 import { FiActivity } from "react-icons/fi";
 import logo from "../Images/gno-wallet.png";
 import { BsStars } from "react-icons/bs";
+import io from "socket.io-client";
 
 const Bitgetbot = () => {
   const [isRunning, setIsRunning] = useState(false);
@@ -67,6 +68,55 @@ const Bitgetbot = () => {
         }
       }
     };
+    useEffect(() => {
+      // Fetch symbols data from API
+      const fetchData = async () => {
+        setLoading(true);
+        try {
+          const response = await axios.get("https://reivun-gkdi.vercel.app/symbols");
+          setSymbolsData(response.data);
+          console.log(response.data, "get");
+        } catch (error) {
+          console.error("Error fetching data from API", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchData();
+  
+      // Initialize socket.io client for real-time updates
+      const socket = io("https://reivun-gkdi.vercel.app"); // Ensure this URL is correct for your server
+      socket.on("connect", () => {
+        console.log("Socket connected!");
+      });
+  
+      socket.on("update", (data) => {
+        setIsSocketLoading(true);
+        try {
+          // Assuming data is in the format { symbol: string, update: { ... } }
+          setSymbolsData((prevData) => {
+            if (Array.isArray(prevData)) {
+              // Replace or append updated symbol data
+              return [...prevData.filter((item) => item.symbol !== data.symbol), data];
+            }
+            return [data];
+          });
+        } catch (error) {
+          console.error("Error handling WebSocket data:", error);
+        }
+        setIsSocketLoading(false);
+      });
+  
+      socket.on("disconnect", () => {
+        console.log("Socket disconnected");
+      });
+  
+      // Cleanup the socket connection when the component unmounts
+      return () => {
+        socket.close();
+      };
+    }, []); // This effect will run only once on mount
   
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -105,60 +155,7 @@ const Bitgetbot = () => {
   //     socket.close();
   //   };
   // }, []);
-  useEffect(() => {
-    // Fetch symbols data from API
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const response = await axios.get("https://reivun-gkdi.vercel.app/symbols");
-        setSymbolsData(response.data);
-        console.log(response.data, "get");
-      } catch (error) {
-        console.error("Error fetching data from API", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-
-    // WebSocket connection setup
-    const socket = new WebSocket("wss://reivun-gkdi.vercel.app"); // Correct WebSocket URL
-
-    socket.onopen = () => {
-      console.log("WebSocket connection established.");
-    };
-
-    socket.onmessage = (event) => {
-      setIsSocketLoading(true);
-      try {
-        const data = JSON.parse(event.data);
-        setSymbolsData((prevData) => {
-          if (Array.isArray(prevData)) {
-            // Replace or append updated symbol data
-            return [...prevData.filter((item) => item.symbol !== data.symbol), data];
-          }
-          return [data];
-        });
-      } catch (error) {
-        console.error("Error parsing WebSocket data:", error);
-      }
-      setIsSocketLoading(false);
-    };
-
-    socket.onerror = (error) => {
-      console.error("WebSocket error:", error);
-    };
-
-    socket.onclose = () => {
-      console.log("WebSocket connection closed.");
-    };
-
-    // Cleanup on component unmount
-    return () => {
-      socket.close();
-    };
-  }, []); // Empty dependency array means this effect runs once after the first render
+// Empty dependency array means this effect runs once after the first render
 
   
   return (
