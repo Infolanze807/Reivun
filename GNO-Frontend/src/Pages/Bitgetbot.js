@@ -86,7 +86,7 @@ const Bitgetbot = () => {
       fetchData();
   
       // Initialize socket.io client for real-time updates
-      const socket = io("https://reivun-gkdi.vercel.app",{ transports: ['websocket'] }); // Ensure this URL is correct for your server
+      const socket = io("https://reivun-gkdi.vercel.app");
       socket.on("connect", () => {
         console.log("Socket connected!");
       });
