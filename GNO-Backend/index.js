@@ -371,7 +371,14 @@ const server = app.listen(port, () => {
 });
 
 // Integrate Socket.IO with the server
-const io = socketIO(server);
+const io = socketIO(server, {
+  cors: {
+    origin: 'https://reivun.vercel.app',  // The frontend domain
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type'],
+    credentials: true
+  }
+});
 
 io.on('connection', (socket) => {
   console.log('New client connected');
