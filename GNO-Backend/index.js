@@ -73,12 +73,32 @@ const cryptosToAnalyze = [
 
 app.use(express.json());
 
+// const corsOptions = {
+//   origin: process.env.REACT_APP_FRONTEND || 'https://reivun.vercel.app',
+//   optionsSuccessStatus: 200,
+// };
+
+// app.use(cors(corsOptions));
+
+const allowedOrigins = [
+  'https://reivun.vercel.app', // Hardcoded frontend URL
+  process.env.REACT_APP_FRONTEND // Dynamic frontend URL from environment variable
+];
+
 const corsOptions = {
-  origin: process.env.REACT_APP_FRONTEND || 'https://reivun.vercel.app',
-  optionsSuccessStatus: 200,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true); // Allow request
+    } else {
+      callback(new Error('Not allowed by CORS')); // Block request
+    }
+  },
+  optionsSuccessStatus: 200, // For older browsers that expect 200 status
 };
 
 app.use(cors(corsOptions));
+
+
 
 app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
 
