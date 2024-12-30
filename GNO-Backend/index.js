@@ -375,8 +375,10 @@ const socketIO = require('socket.io');
 const walletRoutes = require('./Routes/walletRoutes');
 const exchangeRoutes = require('./Routes/exchangeRoutes');
 const transactionRoutes = require('./Routes/transactionRoutes');
-const server = require('https').Server(app);
+
+// Initialize Express app first, then set up server
 const app = express();
+const server = require('https').Server(app);
 const port = 5000;
 
 // Bitget API configuration
@@ -409,11 +411,11 @@ const corsOptions = {
   origin: 'https://reivun.vercel.app', // Ensure this is the frontend URL
   optionsSuccessStatus: 200,
 };
-
 app.use(cors(corsOptions));
 
 app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
 
+// Define routes
 app.use('/', walletRoutes);
 app.use('/', exchangeRoutes);
 app.use('/', transactionRoutes);
@@ -485,8 +487,6 @@ app.get('/symbols', async (req, res) => {
   }
 });
 
-
-
 // Integrate Socket.IO with the server
 const io = socketIO(server, {
   cors: {
@@ -502,11 +502,6 @@ let interval; // Store interval to clear later
 io.on('connection', (socket) => {
   console.log('New client connected');
 
-  // Log WebSocket connection details
-  socket.on('connect', () => {
-    console.log('WebSocket connected:', socket.id);
-  });
-
   interval = setIntervalAsync(async () => {
     const allData = await getAllSymbolData();
     console.log('Sending data to client:', allData);
@@ -518,7 +513,6 @@ io.on('connection', (socket) => {
     clearInterval(interval); // Clear interval when client disconnects
   });
 
-  // Handle any socket errors
   socket.on('error', (error) => {
     console.error('Socket error:', error);
   });
@@ -541,6 +535,6 @@ process.on('SIGINT', () => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+server.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
