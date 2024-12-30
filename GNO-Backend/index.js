@@ -364,24 +364,25 @@
 //   });
 // });
 
-
+require('dotenv').config();
 const express = require('express');
 const ccxt = require('ccxt');
 const moment = require('moment');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
 const cors = require('cors');
-const WebSocket = require('ws');
+const mongoose = require('./Config/database');
+const socketIO = require('socket.io');
+const walletRoutes = require('./Routes/walletRoutes');
+const exchangeRoutes = require('./Routes/exchangeRoutes');
+const transactionRoutes = require('./Routes/transactionRoutes');
 
 const app = express();
 const port = 5000;
-const wss = new WebSocket.Server({ noServer: true });
-
-app.use(cors());
 
 // Bitget API configuration
-const apiKey = 'bg_b066dfb3a01d4524a96cc8498e515ef1';
-const apiSecret = '41a4cb094ff44339cfd6460bec9a6e21e6b366b246391927c9c0d6e3d20da9b3';
-const apiPassphrase = 'Reivun13';
+const apiKey = process.env.REACT_APP_APIKEY;
+const apiSecret = process.env.REACT_APP_SECRETKEY;
+const apiPassphrase = process.env.REACT_APP_PASS;
 
 // Create an exchange object for Bitget
 const exchange = new ccxt.bitget({
@@ -390,7 +391,6 @@ const exchange = new ccxt.bitget({
   password: apiPassphrase,
 });
 
-// Bot settings
 const timeframe = '1m';
 const cryptosToAnalyze = [
   'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
@@ -402,7 +402,22 @@ const cryptosToAnalyze = [
   'ROSE/USDT', 'AERO/USDT'
 ];
 
-// Test connection to Bitget
+app.use(express.json());
+
+// CORS configuration
+const corsOptions = {
+  origin: 'https://reivun.vercel.app', // Ensure this is the frontend URL
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
+
+app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
+
+app.use('/', walletRoutes);
+app.use('/', exchangeRoutes);
+app.use('/', transactionRoutes);
+
 async function testConnection() {
   try {
     const balance = await exchange.fetchBalance();
@@ -421,10 +436,10 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
       const lowerShadow = Math.min(open, close) - low;
       const upperShadow = high - Math.max(open, close);
 
-      const isHammer = 
-        lowerShadow > 2 * realBody && 
-        upperShadow <= 0.1 * realBody && 
-        close > open; // Optional: condition for green candle
+      const isHammer =
+        lowerShadow > 2 * realBody &&
+        upperShadow <= 0.1 * realBody &&
+        close > open;
 
       return {
         timestamp: moment(timestamp).format('YYYY-MM-DD HH:mm:ss'),
@@ -433,7 +448,7 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
         low,
         close,
         volume,
-        isHammer, // Add the Hammer detection flag
+        isHammer,
       };
     });
   } catch (error) {
@@ -442,7 +457,6 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
   }
 }
 
-// Get all symbol data
 async function getAllSymbolData() {
   const allData = {};
   for (const symbol of cryptosToAnalyze) {
@@ -453,55 +467,67 @@ async function getAllSymbolData() {
   return allData;
 }
 
-// Just store the data in memory (no file operations)
-let symbolData = {};
-let hammerData = [];
-
-// Log and store data in memory periodically
 async function logAndStoreData() {
   try {
     const allData = await getAllSymbolData();
     console.log("Fetched Data:", allData);
-    symbolData = allData; // Store in memory
-    hammerData = Object.entries(allData).filter(([symbol, symbolData]) => symbolData.isHammer).map(([symbol, symbolData]) => ({ symbol, data: symbolData }));
   } catch (error) {
-    console.error("Error during data logging and storing:", error.message);
+    console.error("Error during data logging:", error.message);
   }
 }
 
-// API to get all symbol data
 app.get('/symbols', async (req, res) => {
   try {
-    const allData = symbolData;
+    const allData = await getAllSymbolData();
     res.json(allData);
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve symbol data' });
   }
 });
 
-// WebSocket server
-wss.on('connection', (ws) => {
-  const sendData = async () => {
-    const allData = symbolData;
-    ws.send(JSON.stringify(allData));
-  };
+const server = app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});
 
-  const interval = setIntervalAsync(() => {
-    sendData();
-  }, 30000);
+// Integrate Socket.IO with the server
+const io = socketIO(server, {
+  cors: {
+    origin: 'https://reivun.vercel.app', // Update with frontend URL
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+  transports: ['websocket', 'polling'],
+});
 
-  ws.on('close', () => {
-    clearInterval(interval);
+let interval; // Store interval to clear later
+
+io.on('connection', (socket) => {
+  console.log('New client connected');
+
+  interval = setIntervalAsync(async () => {
+    const allData = await getAllSymbolData();
+    socket.emit('symbolData', allData);
+  }, 6000);
+
+  socket.on('disconnect', () => {
+    console.log('Client disconnected');
+    clearInterval(interval); // Clear interval when client disconnects
   });
 });
 
-// Server setup
-app.server = app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}`);
-});
-
-// Periodic data logging
+// Call test connection and log data periodically
 (async () => {
   await testConnection();
   setIntervalAsync(logAndStoreData, 6000);
 })();
+
+// Gracefully shutdown server and cleanup intervals
+process.on('SIGINT', async () => {
+  console.log('Server shutting down...');
+  if (interval) clearInterval(interval); // Clear the interval when shutting down
+  await mongoose.disconnect(); // Disconnect from MongoDB if needed
+  server.close(() => {
+    console.log('Server has stopped.');
+    process.exit(0);
+  });
+});
