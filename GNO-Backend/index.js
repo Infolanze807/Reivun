@@ -201,7 +201,6 @@
 const express = require('express');
 const ccxt = require('ccxt');
 const moment = require('moment');
-const fs = require('fs');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
 const cors = require('cors');
 const http = require('http');
@@ -233,7 +232,7 @@ const exchange = new ccxt.bitget({
 // Define the rest of your logic (data fetching, storing, etc.)
 const timeframe = '1m';
 const cryptosToAnalyze = [
-    'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
+  'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
   'SOL/USDT', 'BGB/USDT', 'ADA/USDT', 'SUI/USDT', 'SEI/USDT', 'DOGE/USDT',
   'FIL/USDT', 'LTC/USDT', 'LINK/USDT', 'FET/USDT', 'PEAQ/USDT', 'TON/USDT',
   'APE/USDT', 'AVAX/USDT', 'ARB/USDT', 'TIA/USDT', 'NEAR/USDT', 'KAS/USDT',
@@ -263,7 +262,7 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
       const isHammer = 
         lowerShadow > 2 * realBody && 
         upperShadow <= 0.1 * realBody && 
-        close > open; // Optional: condition for green candle
+        close > open;
 
       return {
         timestamp: moment(timestamp).format('YYYY-MM-DD HH:mm:ss'),
@@ -295,8 +294,7 @@ async function logAndStoreData() {
   try {
     const allData = await getAllSymbolData();
     console.log("Fetched Data:", allData);
-    // storeDataInJson(allData);
-    // storeHammerData(allData);  // Store hammer data
+    // Optional: store data here
   } catch (error) {
     console.error("Error during data logging and storing:", error.message);
   }
@@ -316,7 +314,7 @@ io.on('connection', (socket) => {
   console.log('New client connected');
 
   const sendData = async () => {
-    const allData = await getAllSymbolData();  // Your data fetching logic
+    const allData = await getAllSymbolData();
     socket.emit('data', allData);  // Emit data to the frontend
   };
 
