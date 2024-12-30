@@ -102,16 +102,7 @@ const Bitgetbot = () => {
     socket.on("update", (data) => {
       setIsSocketLoading(true);
       try {
-        setSymbolsData((prevData) => {
-          if (Array.isArray(prevData)) {
-            // Replace or append updated symbol data
-            return [
-              ...prevData.filter((item) => item.symbol !== data.symbol),
-              data,
-            ];
-          }
-          return [data];
-        });
+      setSymbolsData(data)
       } catch (error) {
         console.error("Error handling WebSocket data:", error);
       }
