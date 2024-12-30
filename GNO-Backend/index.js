@@ -231,6 +231,85 @@ const exchange = new ccxt.bitget({
 });
 
 // Define the rest of your logic (data fetching, storing, etc.)
+const timeframe = '1m';
+const cryptosToAnalyze = [
+    'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
+  'SOL/USDT', 'BGB/USDT', 'ADA/USDT', 'SUI/USDT', 'SEI/USDT', 'DOGE/USDT',
+  'FIL/USDT', 'LTC/USDT', 'LINK/USDT', 'FET/USDT', 'PEAQ/USDT', 'TON/USDT',
+  'APE/USDT', 'AVAX/USDT', 'ARB/USDT', 'TIA/USDT', 'NEAR/USDT', 'KAS/USDT',
+  'APT/USDT', 'ATOM/USDT', 'RENDER/USDT', 'STX/USDT', 'INJ/USDT', 'FTM/USDT',
+  'JASMY/USDT', 'BNB/USDT', '1INCH/USDT', 'BONK/USDT', 'SUSHI/USDT',
+  'ROSE/USDT', 'AERO/USDT'
+];
+
+async function testConnection() {
+  try {
+    const balance = await exchange.fetchBalance();
+    console.log("Connection successful! Account balance:", balance);
+  } catch (error) {
+    console.error(`Error connecting to Bitget: ${error.message}`);
+    process.exit(1);
+  }
+}
+
+async function fetchCandles(symbol, timeframe, limit = 100) {
+  try {
+    const candles = await exchange.fetchOHLCV(symbol, timeframe, undefined, limit);
+    return candles.map(([timestamp, open, high, low, close, volume]) => {
+      const realBody = Math.abs(close - open);
+      const lowerShadow = Math.min(open, close) - low;
+      const upperShadow = high - Math.max(open, close);
+
+      const isHammer = 
+        lowerShadow > 2 * realBody && 
+        upperShadow <= 0.1 * realBody && 
+        close > open; // Optional: condition for green candle
+
+      return {
+        timestamp: moment(timestamp).format('YYYY-MM-DD HH:mm:ss'),
+        open,
+        high,
+        low,
+        close,
+        volume,
+        isHammer, // Add the Hammer detection flag
+      };
+    });
+  } catch (error) {
+    console.error(`Error fetching candles for ${symbol}:`, error.message);
+    return [];
+  }
+}
+
+async function getAllSymbolData() {
+  const allData = {};
+  for (const symbol of cryptosToAnalyze) {
+    const candles = await fetchCandles(symbol, timeframe);
+    const lastCandle = candles[candles.length - 1];
+    allData[symbol] = lastCandle || {};
+  }
+  return allData;
+}
+
+async function logAndStoreData() {
+  try {
+    const allData = await getAllSymbolData();
+    console.log("Fetched Data:", allData);
+    // storeDataInJson(allData);
+    // storeHammerData(allData);  // Store hammer data
+  } catch (error) {
+    console.error("Error during data logging and storing:", error.message);
+  }
+}
+
+app.get('/symbols', async (req, res) => {
+  try {
+    const allData = await getAllSymbolData();
+    res.json(allData);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve symbol data' });
+  }
+});
 
 // WebSocket server using Socket.IO
 io.on('connection', (socket) => {
