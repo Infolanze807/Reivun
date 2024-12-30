@@ -375,7 +375,7 @@ const socketIO = require('socket.io');
 const walletRoutes = require('./Routes/walletRoutes');
 const exchangeRoutes = require('./Routes/exchangeRoutes');
 const transactionRoutes = require('./Routes/transactionRoutes');
-
+const server = require('https').Server(app);
 const app = express();
 const port = 5000;
 
@@ -485,9 +485,7 @@ app.get('/symbols', async (req, res) => {
   }
 });
 
-const server = app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+
 
 // Integrate Socket.IO with the server
 const io = socketIO(server, {
@@ -541,4 +539,8 @@ process.on('SIGINT', () => {
     console.log('Server has stopped.');
     process.exit(0);
   });
+});
+
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
