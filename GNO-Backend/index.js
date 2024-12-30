@@ -364,33 +364,24 @@
 //   });
 // });
 
-require('dotenv').config();
+
 const express = require('express');
 const ccxt = require('ccxt');
 const moment = require('moment');
 const { setIntervalAsync } = require('set-interval-async/dynamic');
 const cors = require('cors');
-const mongoose = require('./Config/database');
-const socketIO = require('socket.io');
-const https = require('https'); // For HTTPS configuration
-const fs = require('fs');
-const walletRoutes = require('./Routes/walletRoutes');
-const exchangeRoutes = require('./Routes/exchangeRoutes');
-const transactionRoutes = require('./Routes/transactionRoutes');
+const WebSocket = require('ws');
 
 const app = express();
 const port = 5000;
+const wss = new WebSocket.Server({ noServer: true });
 
-// HTTPS Configuration
-const options = {
-  key: fs.readFileSync('path/to/your/private.key'), // Replace with your SSL key path
-  cert: fs.readFileSync('path/to/your/certificate.crt'), // Replace with your SSL certificate path
-};
+app.use(cors());
 
 // Bitget API configuration
-const apiKey = process.env.REACT_APP_APIKEY;
-const apiSecret = process.env.REACT_APP_SECRETKEY;
-const apiPassphrase = process.env.REACT_APP_PASS;
+const apiKey = 'bg_b066dfb3a01d4524a96cc8498e515ef1';
+const apiSecret = '41a4cb094ff44339cfd6460bec9a6e21e6b366b246391927c9c0d6e3d20da9b3';
+const apiPassphrase = 'Reivun13';
 
 // Create an exchange object for Bitget
 const exchange = new ccxt.bitget({
@@ -399,6 +390,7 @@ const exchange = new ccxt.bitget({
   password: apiPassphrase,
 });
 
+// Bot settings
 const timeframe = '1m';
 const cryptosToAnalyze = [
   'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
@@ -407,26 +399,10 @@ const cryptosToAnalyze = [
   'APE/USDT', 'AVAX/USDT', 'ARB/USDT', 'TIA/USDT', 'NEAR/USDT', 'KAS/USDT',
   'APT/USDT', 'ATOM/USDT', 'RENDER/USDT', 'STX/USDT', 'INJ/USDT', 'FTM/USDT',
   'JASMY/USDT', 'BNB/USDT', '1INCH/USDT', 'BONK/USDT', 'SUSHI/USDT',
-  'ROSE/USDT', 'AERO/USDT',
+  'ROSE/USDT', 'AERO/USDT'
 ];
 
-app.use(express.json());
-
-// CORS configuration
-const corsOptions = {
-  origin: 'https://reivun.vercel.app', // Ensure this matches your frontend URL
-  methods: ['GET', 'POST'],
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
-app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
-
-app.use('/', walletRoutes);
-app.use('/', exchangeRoutes);
-app.use('/', transactionRoutes);
-
+// Test connection to Bitget
 async function testConnection() {
   try {
     const balance = await exchange.fetchBalance();
@@ -445,10 +421,10 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
       const lowerShadow = Math.min(open, close) - low;
       const upperShadow = high - Math.max(open, close);
 
-      const isHammer =
-        lowerShadow > 2 * realBody &&
-        upperShadow <= 0.1 * realBody &&
-        close > open;
+      const isHammer = 
+        lowerShadow > 2 * realBody && 
+        upperShadow <= 0.1 * realBody && 
+        close > open; // Optional: condition for green candle
 
       return {
         timestamp: moment(timestamp).format('YYYY-MM-DD HH:mm:ss'),
@@ -457,7 +433,7 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
         low,
         close,
         volume,
-        isHammer,
+        isHammer, // Add the Hammer detection flag
       };
     });
   } catch (error) {
@@ -466,6 +442,7 @@ async function fetchCandles(symbol, timeframe, limit = 100) {
   }
 }
 
+// Get all symbol data
 async function getAllSymbolData() {
   const allData = {};
   for (const symbol of cryptosToAnalyze) {
@@ -476,64 +453,55 @@ async function getAllSymbolData() {
   return allData;
 }
 
+// Just store the data in memory (no file operations)
+let symbolData = {};
+let hammerData = [];
+
+// Log and store data in memory periodically
 async function logAndStoreData() {
   try {
     const allData = await getAllSymbolData();
     console.log("Fetched Data:", allData);
+    symbolData = allData; // Store in memory
+    hammerData = Object.entries(allData).filter(([symbol, symbolData]) => symbolData.isHammer).map(([symbol, symbolData]) => ({ symbol, data: symbolData }));
   } catch (error) {
-    console.error("Error during data logging:", error.message);
+    console.error("Error during data logging and storing:", error.message);
   }
 }
 
+// API to get all symbol data
 app.get('/symbols', async (req, res) => {
   try {
-    const allData = await getAllSymbolData();
+    const allData = symbolData;
     res.json(allData);
   } catch (error) {
     res.status(500).json({ error: 'Failed to retrieve symbol data' });
   }
 });
 
-// Start HTTPS server
-const server = https.createServer(options, app).listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+// WebSocket server
+wss.on('connection', (ws) => {
+  const sendData = async () => {
+    const allData = symbolData;
+    ws.send(JSON.stringify(allData));
+  };
 
-// Integrate Socket.IO with the server
-const io = socketIO(server, {
-  cors: corsOptions,
-  transports: ['websocket'], // Use WebSocket only
-});
+  const interval = setIntervalAsync(() => {
+    sendData();
+  }, 30000);
 
-let interval; // Store interval to clear later
-
-io.on('connection', (socket) => {
-  console.log('New client connected');
-
-  interval = setIntervalAsync(async () => {
-    const allData = await getAllSymbolData();
-    socket.emit('symbolData', allData);
-  }, 6000);
-
-  socket.on('disconnect', () => {
-    console.log('Client disconnected');
-    clearInterval(interval); // Clear interval when client disconnects
+  ws.on('close', () => {
+    clearInterval(interval);
   });
 });
 
-// Call test connection and log data periodically
+// Server setup
+app.server = app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
+
+// Periodic data logging
 (async () => {
   await testConnection();
   setIntervalAsync(logAndStoreData, 6000);
 })();
-
-// Gracefully shutdown server and cleanup intervals
-process.on('SIGINT', () => {
-  console.log('Server shutting down...');
-  clearInterval(interval); // Clear the interval when shutting down
-  mongoose.disconnect(); // Disconnect from MongoDB if needed
-  server.close(() => {
-    console.log('Server has stopped.');
-    process.exit(0);
-  });
-});
