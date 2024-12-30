@@ -375,10 +375,8 @@ const socketIO = require('socket.io');
 const walletRoutes = require('./Routes/walletRoutes');
 const exchangeRoutes = require('./Routes/exchangeRoutes');
 const transactionRoutes = require('./Routes/transactionRoutes');
-
-// Initialize Express app first, then set up server
+const server = require('https').Server(app);  // Keep this line as it is
 const app = express();
-const server = require('https').Server(app);
 const port = 5000;
 
 // Bitget API configuration
