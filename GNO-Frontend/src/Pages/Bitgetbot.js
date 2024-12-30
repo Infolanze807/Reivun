@@ -72,54 +72,83 @@ const Bitgetbot = () => {
     }
   };
 
-  // Function to fetch data on initial load
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get("https://reivun-gkdi.vercel.app/symbols");
-      setSymbolsData(response.data);
-      console.log(response.data, "get");
-    } catch (error) {
-      console.error("Error fetching data from API", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Initialize Socket.IO for real-time updates
   useEffect(() => {
+    // Function to fetch initial data
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get("https://reivun-gkdi.vercel.app/symbols");
+        setSymbolsData(response.data); // Set the symbols data initially
+      } catch (error) {
+        setError("Error fetching data from API");
+        console.error("Error fetching data from API", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    // Fetch initial data
     fetchData();
 
-    // Initialize socket.io client for real-time updates
-    const socket = io("https://reivun-gkdi.vercel.app");
+    // Function to establish WebSocket connection with reconnection logic
+    const connectWebSocket = () => {
+      const socket = new WebSocket("wss://https://reivun-gkdi.vercel.app");
 
-    // Handle socket connection
-    socket.on("connect", () => {
-      console.log("Socket connected!");
-    });
+      // WebSocket onopen event handler
+      socket.onopen = () => {
+        console.log("WebSocket connection established");
+      };
 
-    // Handle update event from the server
-    socket.on("update", (data) => {
-      setIsSocketLoading(true);
-      try {
-      setSymbolsData(data)
-      } catch (error) {
-        console.error("Error handling WebSocket data:", error);
-      }
-      setIsSocketLoading(false);
-    });
+      // WebSocket onmessage event handler
+      socket.onmessage = (event) => {
+        setIsSocketLoading(true);
+        console.log("WebSocket message received:", event.data); // Log the raw message
 
-    // Handle socket disconnection
-    socket.on("disconnect", () => {
-      console.log("Socket disconnected");
-    });
+        try {
+          const data = JSON.parse(event.data); // Parse incoming JSON data
+          console.log("Parsed WebSocket message:", data); // Log parsed data
+          setSymbolsData((prevData) => {
+            return {
+              ...prevData,
+              ...data, // Merge new WebSocket data with existing symbols data
+            };
+          });
+        } catch (error) {
+          console.error("Error processing WebSocket data:", error);
+          setError("Error processing WebSocket data");
+        } finally {
+          setIsSocketLoading(false);
+        }
+      };
 
-    // Cleanup the socket connection when the component unmounts
+      // WebSocket onerror event handler
+      socket.onerror = (error) => {
+        setError("Error with WebSocket connection");
+        console.error("WebSocket error:", error);
+      };
+
+      // WebSocket onclose event handler to reconnect if the connection is closed
+      socket.onclose = (event) => {
+        if (!event.wasClean) {
+          console.error("WebSocket connection closed unexpectedly, reconnecting...");
+          setTimeout(connectWebSocket, 30000); // Reconnect after 3 seconds
+        } else {
+          console.log("WebSocket connection closed cleanly");
+        }
+      };
+
+      return socket;
+    };
+
+    // Establish the WebSocket connection
+    const socket = connectWebSocket();
+
+    // Cleanup WebSocket connection when the component unmounts
     return () => {
+      console.log("Closing WebSocket connection");
       socket.close();
     };
-  }, []);
-  
+  }, []);  
   return (
     <div className="min-h-screen bg-[--bg-color] p-4">
       <div className="mx-auto max-w-7xl space-y-4">
