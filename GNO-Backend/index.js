@@ -54,7 +54,8 @@ io.on('connection', (socket) => {
   });
 });
 
-// Starting the server
 server.listen(port, () => {
   console.log(`Server running at https://reivun-gkdi.vercel.app:${port}`);
 });
+
+module.exports = server;
