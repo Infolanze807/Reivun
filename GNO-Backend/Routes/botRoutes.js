@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { getAllSymbolData, logAndStoreData } = require('../Controllers/cryptoController');
+const { getAllSymbolData, logAndStoreData } = require('../Controllers/botController');
 
 // Endpoint to get all symbol data
 router.get('/symbols', async (req, res) => {
