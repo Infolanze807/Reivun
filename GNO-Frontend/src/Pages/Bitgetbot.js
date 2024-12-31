@@ -980,7 +980,7 @@ const Bitgetbot = () => {
         <div className="bg-white p-6 rounded-lg shadow">
           <h2 className="mb-4 text-xl font-semibold">Trade History</h2>
           <div className="flex h-[200px] items-center justify-center rounded-lg border">
-            <h3 className="text-gray-500">Aucun trade pour le moment</h3>
+            <h3 className="text-gray-500">No trades at the moment</h3>
           </div>
         </div>
       </div>
