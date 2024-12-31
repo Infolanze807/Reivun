@@ -47,7 +47,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: process.env.REACT_APP_FRONTEND || "*",
+    origin: "*",
     methods: ["GET", "POST"]
   }
 });
@@ -57,7 +57,7 @@ const port = 5000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: process.env.REACT_APP_FRONTEND || "*",
+  origin: "*",
   optionsSuccessStatus: 200,
 }));
 
@@ -70,9 +70,9 @@ app.use('/', transactionRoutes);
 app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
 
 // Bitget API Configuration
-const apiKey = 'bg_b066dfb3a01d4524a96cc8498e515ef1';
-const apiSecret = '41a4cb094ff44339cfd6460bec9a6e21e6b366b246391927c9c0d6e3d20da9b3';
-const apiPassphrase = 'Reivun13';
+const apiKey = process.env.REACT_APP_APIKEY;
+const apiSecret = process.env.REACT_APP_SECRETKEY;
+const apiPassphrase = process.env.REACT_APP_PASS;
 
 const exchange = new ccxt.bitget({
   apiKey: apiKey,
