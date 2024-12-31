@@ -64,74 +64,74 @@ const getAllSymbolData = async () => {
   return allData;
 };
 
-// Store data in a JSON file
-const storeDataInJson = (data) => {
-  let existingData = [];
-  if (fs.existsSync(jsonFilePath)) {
-    try {
-      const fileContent = fs.readFileSync(jsonFilePath, 'utf-8');
-      existingData = JSON.parse(fileContent);
-      if (!Array.isArray(existingData)) {
-        console.warn("JSON file content is not an array. Reinitializing...");
-        existingData = [];
-      }
-    } catch (error) {
-      console.error("Error reading or parsing JSON file. Reinitializing...", error.message);
-      existingData = [];
-    }
-  }
+// // Store data in a JSON file
+// const storeDataInJson = (data) => {
+//   let existingData = [];
+//   if (fs.existsSync(jsonFilePath)) {
+//     try {
+//       const fileContent = fs.readFileSync(jsonFilePath, 'utf-8');
+//       existingData = JSON.parse(fileContent);
+//       if (!Array.isArray(existingData)) {
+//         console.warn("JSON file content is not an array. Reinitializing...");
+//         existingData = [];
+//       }
+//     } catch (error) {
+//       console.error("Error reading or parsing JSON file. Reinitializing...", error.message);
+//       existingData = [];
+//     }
+//   }
 
-  existingData.push(data);
+//   existingData.push(data);
 
-  try {
-    fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
-    console.log("Data successfully appended to JSON file.");
-  } catch (error) {
-    console.error("Error writing to JSON file:", error.message);
-  }
-};
+//   try {
+//     fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
+//     console.log("Data successfully appended to JSON file.");
+//   } catch (error) {
+//     console.error("Error writing to JSON file:", error.message);
+//   }
+// };
 
-// Store hammer data in true.json
-const storeHammerData = (data) => {
-  let hammerData = [];
+// // Store hammer data in true.json
+// const storeHammerData = (data) => {
+//   let hammerData = [];
 
-  if (fs.existsSync(trueJsonFilePath)) {
-    try {
-      const fileContent = fs.readFileSync(trueJsonFilePath, 'utf-8');
-      hammerData = JSON.parse(fileContent);
-      if (!Array.isArray(hammerData)) {
-        console.warn("true.json content is not an array. Reinitializing...");
-        hammerData = [];
-      }
-    } catch (error) {
-      console.error("Error reading or parsing true.json. Reinitializing...", error.message);
-      hammerData = [];
-    }
-  }
+//   if (fs.existsSync(trueJsonFilePath)) {
+//     try {
+//       const fileContent = fs.readFileSync(trueJsonFilePath, 'utf-8');
+//       hammerData = JSON.parse(fileContent);
+//       if (!Array.isArray(hammerData)) {
+//         console.warn("true.json content is not an array. Reinitializing...");
+//         hammerData = [];
+//       }
+//     } catch (error) {
+//       console.error("Error reading or parsing true.json. Reinitializing...", error.message);
+//       hammerData = [];
+//     }
+//   }
 
-  Object.entries(data).forEach(([symbol, symbolData]) => {
-    if (symbolData.isHammer) {
-      hammerData.push({ symbol, data: symbolData });
-    }
-  });
+//   Object.entries(data).forEach(([symbol, symbolData]) => {
+//     if (symbolData.isHammer) {
+//       hammerData.push({ symbol, data: symbolData });
+//     }
+//   });
 
-  if (hammerData.length > 0) {
-    try {
-      fs.writeFileSync(trueJsonFilePath, JSON.stringify(hammerData, null, 2));
-      console.log("Hammer data successfully appended to true.json.");
-    } catch (error) {
-      console.error("Error writing hammer data to true.json:", error.message);
-    }
-  }
-};
+//   if (hammerData.length > 0) {
+//     try {
+//       fs.writeFileSync(trueJsonFilePath, JSON.stringify(hammerData, null, 2));
+//       console.log("Hammer data successfully appended to true.json.");
+//     } catch (error) {
+//       console.error("Error writing hammer data to true.json:", error.message);
+//     }
+//   }
+// };
 
 // Controller function for logging and storing data
 const logAndStoreData = async () => {
   try {
     const allData = await getAllSymbolData();
     console.log("Fetched Data:", allData);
-    storeDataInJson(allData);
-    storeHammerData(allData);
+    // storeDataInJson(allData);
+    // storeHammerData(allData);
   } catch (error) {
     console.error("Error during data logging and storing:", error.message);
   }
