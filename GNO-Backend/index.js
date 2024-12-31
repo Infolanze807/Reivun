@@ -92,8 +92,8 @@ const cryptosToAnalyze = [
   'ROSE/USDT', 'AERO/USDT'
 ];
 
-const jsonFilePath = './symbols_data.json';
-const trueJsonFilePath = './true.json';
+// const jsonFilePath = './symbols_data.json';
+// const trueJsonFilePath = './true.json';
 
 // Helper functions
 async function testConnection() {
@@ -145,61 +145,70 @@ async function getAllSymbolData() {
   return allData;
 }
 
-function storeDataInJson(data) {
-  let existingData = [];
-  if (fs.existsSync(jsonFilePath)) {
-    try {
-      const fileContent = fs.readFileSync(jsonFilePath, 'utf-8');
-      existingData = JSON.parse(fileContent);
-    } catch (error) {
-      console.error("Error reading or parsing JSON file. Reinitializing...", error.message);
-    }
-  }
-  existingData.push(data);
-  try {
-    fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
-    console.log("Data successfully appended to JSON file.");
-  } catch (error) {
-    console.error("Error writing to JSON file:", error.message);
-  }
-}
+// function storeDataInJson(data) {
+//   let existingData = [];
+//   if (fs.existsSync(jsonFilePath)) {
+//     try {
+//       const fileContent = fs.readFileSync(jsonFilePath, 'utf-8');
+//       existingData = JSON.parse(fileContent);
+//     } catch (error) {
+//       console.error("Error reading or parsing JSON file. Reinitializing...", error.message);
+//     }
+//   }
+//   existingData.push(data);
+//   try {
+//     fs.writeFileSync(jsonFilePath, JSON.stringify(existingData, null, 2));
+//     console.log("Data successfully appended to JSON file.");
+//   } catch (error) {
+//     console.error("Error writing to JSON file:", error.message);
+//   }
+// }
 
-function storeHammerData(data) {
-  let hammerData = [];
-  if (fs.existsSync(trueJsonFilePath)) {
-    try {
-      const fileContent = fs.readFileSync(trueJsonFilePath, 'utf-8');
-      hammerData = JSON.parse(fileContent);
-    } catch (error) {
-      console.error("Error reading or parsing true.json. Reinitializing...", error.message);
-    }
-  }
-  Object.entries(data).forEach(([symbol, symbolData]) => {
-    if (symbolData.isHammer) {
-      hammerData.push({ symbol, data: symbolData });
-    }
-  });
-  if (hammerData.length > 0) {
-    try {
-      fs.writeFileSync(trueJsonFilePath, JSON.stringify(hammerData, null, 2));
-      console.log("Hammer data successfully appended to true.json.");
-    } catch (error) {
-      console.error("Error writing hammer data to true.json:", error.message);
-    }
-  }
-}
+// function storeHammerData(data) {
+//   let hammerData = [];
+//   if (fs.existsSync(trueJsonFilePath)) {
+//     try {
+//       const fileContent = fs.readFileSync(trueJsonFilePath, 'utf-8');
+//       hammerData = JSON.parse(fileContent);
+//     } catch (error) {
+//       console.error("Error reading or parsing true.json. Reinitializing...", error.message);
+//     }
+//   }
+//   Object.entries(data).forEach(([symbol, symbolData]) => {
+//     if (symbolData.isHammer) {
+//       hammerData.push({ symbol, data: symbolData });
+//     }
+//   });
+//   if (hammerData.length > 0) {
+//     try {
+//       fs.writeFileSync(trueJsonFilePath, JSON.stringify(hammerData, null, 2));
+//       console.log("Hammer data successfully appended to true.json.");
+//     } catch (error) {
+//       console.error("Error writing hammer data to true.json:", error.message);
+//     }
+//   }
+// }
 
 async function logAndStoreData() {
   try {
     const allData = await getAllSymbolData();
     console.log("Fetched Data:", allData);
-    storeDataInJson(allData);
-    storeHammerData(allData);
+    // storeDataInJson(allData);
+    // storeHammerData(allData);
     io.emit('symbolsData', allData);
   } catch (error) {
     console.error("Error during data logging and storing:", error.message);
   }
 }
+
+app.get('/symbols', async (req, res) => {
+  try {
+    const allData = await getAllSymbolData();
+    res.json(allData);
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to retrieve symbol data' });
+  }
+});
 
 // Socket.IO connection handling
 io.on('connection', (socket) => {
