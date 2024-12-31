@@ -819,7 +819,7 @@ const Bitgetbot = () => {
         <div className="grid gap-4 md:grid-cols-2 h-full w-full">
           <div className="bg-white p-2 rounded-lg shadow">
             <h2 className="mb-4 text-xl font-semibold">Watched Market</h2>
-            <div className="bg-[#f5f5ff] rounded-lg px-2 overflow-y-scroll max-h-[300px]">
+            <div className="bg-[--bg-color] rounded-lg px-2 overflow-y-scroll max-h-[300px]">
             {Object.entries(symbolsData).length === 0 && !isSocketLoading ? (
             <p>No data available.</p>
           ) : (
