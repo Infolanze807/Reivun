@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { setIntervalAsync } = require('set-interval-async/dynamic');
 const { getAllSymbolData, logAndStoreData } = require('../Controllers/botController');
 
 // Endpoint to get all symbol data
