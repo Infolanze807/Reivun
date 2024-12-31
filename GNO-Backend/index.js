@@ -57,7 +57,7 @@ const port = 5000;
 // Middleware
 app.use(express.json());
 app.use(cors({
-  origin: process.env.REACT_APP_FRONTEND,
+  origin: process.env.REACT_APP_FRONTEND || "*",
   optionsSuccessStatus: 200,
 }));
 
