@@ -6,7 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    filter: invert(1);
 }
 body{
     background-color: var(--bg-color);
@@ -24,5 +23,5 @@ body{
 }
 img
 {
-  filter: invert(0) !important;
+  filter: invert(0);
 }
