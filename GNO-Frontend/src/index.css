@@ -9,7 +9,7 @@
 }
 body{
     background-color: var(--bg-color);
-    filter: invert(0) !important;
+    filter: invert(0);
 }
 :root{
     --bg-color:#1b1b1c;
