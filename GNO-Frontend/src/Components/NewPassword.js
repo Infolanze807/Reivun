@@ -95,6 +95,7 @@ function NewPassword() {
         <img
           src={logo}
           className="mb-5 h-[90px] w-[100px] shadow-custom"
+           id="notinvert"
         />
         <div className="flex flex-col items-center justify-center bg-[--bg-color] border-[--border-color] border shadow-sm p-4 gap-3 rounded-2xl w-[300px] sm:w-[320px] md:w-[350px] lg:w-[350px] xl:w-[350px]">
           <h1 className="text-base">Set Password</h1>

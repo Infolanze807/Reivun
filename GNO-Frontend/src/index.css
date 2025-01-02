@@ -26,3 +26,8 @@ img
 {
   filter: invert(0);
 }
+
+#notinvert
+{
+filter: invert(0) !important;
+}

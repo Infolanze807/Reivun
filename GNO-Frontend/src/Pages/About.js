@@ -149,6 +149,7 @@ const Bitgetbot = () => {
                 src={logo}
                 className="md:w-16 w-12 rounded-full"
                 alt="Reivun Logo"
+                 id="notinvert"
               />
               <span className="text-3xl font-semibold text-[--main-color]">
                 Reivun Bot

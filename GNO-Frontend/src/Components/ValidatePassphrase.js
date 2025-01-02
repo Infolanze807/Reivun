@@ -205,7 +205,7 @@ function ValidatePassphrase() {
 
   return (
     <div className="text-white flex flex-col items-center h-[90vh] md:h-[90vh] lg:h-[90vh] xl:h-[90vh] justify-center">
-      <img src={logo} className="mb-5 h-[100px] w-[100px] rounded-full  shadow-custom" />
+      <img src={logo} className="mb-5 h-[100px] w-[100px] rounded-full  shadow-custom"  id="notinvert"/>
       <div className="flex flex-col items-center justify-center bg-[--bg-color] border-[--border-color] border shadow-sm p-4 gap-3 rounded-2xl w-[300px] sm:w-[320px] md:w-[350px] lg:w-[350px] xl:w-[350px]">
         <h1 className="text-xl">Validate Passphrase Words</h1>
         <div className="w-full border-2 border-[--green-color] my-2 relative">

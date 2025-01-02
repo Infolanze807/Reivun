@@ -40,7 +40,7 @@ const User = () => {
               </div>
             </div>
             <div>
-              <img className="w-[600px]" src={img1} alt="Qr" />
+              <img className="w-[600px]" src={img1} alt="Qr"  id="notinvert" />
             </div>
           </div>
         </div>
@@ -69,23 +69,23 @@ const User = () => {
               </Link>
             </div>
             <div>
-              <img className="w-[330px] mx-auto" src={img2} alt="Qr" />
+              <img className="w-[330px] mx-auto" src={img2} alt="Qr"  id="notinvert" />
             </div>
           </div>
           <div className="grid lg:grid-cols-3 md:grid-cols-3 grid-cols-1 items-center pt-10 lg:gap-10 md:gap-5 gap-10">
             <div className="bg-[--bg-color] lg:p-8 md:p-3 p-5 rounded-2xl">
                 <div className="text-2xl font-bold text-white leading-6">Added security with encryption</div>
-                <div className="py-12"><img className="mx-auto w-36" src={img31} alt="Security" /></div>
+                <div className="py-12"><img className="mx-auto w-36" src={img31} alt="Security"  id="notinvert"/></div>
                 <div className="text-white">Use our Encrypted Cloud Backup for increased wallet security.</div>
             </div>
             <div className="bg-[--bg-color] lg:p-8 md:p-3 p-5 rounded-2xl">
                 <div className="text-2xl font-bold text-white leading-6">Zero personal tracking</div>
-                <div className="py-12"><img className="mx-auto w-24" src={img32} alt="Security" /></div>
+                <div className="py-12"><img className="mx-auto w-24" src={img32} alt="Security"  id="notinvert"/></div>
                 <div className="text-white">We don't track any personal information, including your IP address or balances.</div>
             </div>
             <div className="bg-[--bg-color] lg:p-8 md:p-3 p-5 rounded-2xl">
                 <div className="text-2xl font-bold text-white leading-6">Proactive alerts for risky transactions</div>
-                <div className="py-12"><img className="mx-auto w-36" src={img33} alt="Security" /></div>
+                <div className="py-12"><img className="mx-auto w-36" src={img33} alt="Security"  id="notinvert"/></div>
                 <div className="text-white">Stay safe with alerts for risky address and dApp connections.</div>
             </div>
           </div>
