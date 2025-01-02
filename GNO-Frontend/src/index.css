@@ -6,7 +6,6 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    filter: invert(0);
 }
 body{
     background-color: var(--bg-color);
@@ -22,12 +21,8 @@ body{
 {
     outline: 1px solid transparent;  
 }
-img
-{
-  filter: invert(0);
-}
 
 #notinvert
 {
-filter: invert(0) !important;
+filter: invert(1) !important;
 }
