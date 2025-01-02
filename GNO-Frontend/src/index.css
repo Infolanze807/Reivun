@@ -31,4 +31,11 @@ body{
       filter: invert(1) !important;
     }
   }
+
+  @media (prefers-color-scheme: light) {
+    #notinvert {
+      filter: invert(1) !important;
+    }
+  }
+
   
