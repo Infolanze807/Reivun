@@ -22,9 +22,9 @@ body{
     outline: 1px solid transparent;  
 }
 
-#notinvert {
+/* #notinvert {
     filter: invert(0) !important;
-  }
+  } */
 
 @media (prefers-color-scheme: dark) {
     #notinvert {
@@ -34,7 +34,7 @@ body{
 
   @media (prefers-color-scheme: light) {
     #notinvert {
-      filter: invert(1) !important;
+      filter: invert(0) !important;
     }
   }
 
