@@ -660,7 +660,7 @@ const Header = () => {
                       About
                     </NavLink>
                   </li>
-                  <li>
+                  {/* <li>
                     <NavLink
                       to="/bot"
                       onClick={closeMenu}
@@ -673,7 +673,7 @@ const Header = () => {
                       <MdPlayArrow className="lg:hidden" />
                       Reivun Bot
                     </NavLink>
-                  </li>
+                  </li> */}
                   <li>
                     <a
                       href="mailto:Leviathan5713@gmail.com"
