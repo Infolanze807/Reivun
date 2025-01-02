@@ -6,10 +6,10 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    filter: invert(1);
 }
 body{
     background-color: var(--bg-color);
-    filter: invert(0);
 }
 :root{
     --bg-color:#1b1b1c;
