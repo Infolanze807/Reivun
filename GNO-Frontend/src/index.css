@@ -26,7 +26,7 @@ body{
     filter: invert(0) !important;
   }
 
-@media (forced-colors: active) {
+@media (prefers-color-scheme: dark) {
     #notinvert {
       filter: invert(1) !important;
     }
