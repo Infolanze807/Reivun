@@ -832,7 +832,7 @@ const HeroSection = () => {
           </div>
         </div>
         <div className="order-1 lg:order-2 md:order-1">
-          <img className="lg:w-[560px] md:w-[400px] w-[300px] mx-auto pt-14" src={img} alt="Gnosis"  id="notinvert"/>
+          <img className="lg:w-[560px] md:w-[400px] w-[300px] mx-auto pt-14" src={img} alt="Gnosis" />
         </div>
       </div>
       <div className="grid lg:grid-cols-5 md:grid-cols-5 grid-cols-1 gap-5 lg:gap-0 md:gap-0 pt-8 lg:pb-20 md:pb-20 pb-10">

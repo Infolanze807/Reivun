@@ -12,7 +12,6 @@ const SplashScreen = ({ appName, logoSrc }) => {
             width={180}
             height={180}
             className="mx-auto rounded-[50%]"
-             id="notinvert"
           />
         </div>
         <h1 className="text-4xl font-bold text-white mb-4">{appName}</h1>

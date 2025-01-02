@@ -579,7 +579,6 @@ const Header = () => {
               <img
                 src={logo}
                 className="md:w-16 w-12 rounded-full"
-                id="notinvert"
                 alt="Reivun Logo"
               />
               <span className="text-3xl font-semibold text-[--main-color]">

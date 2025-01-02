@@ -21,7 +21,7 @@ const Trust = () => {
           <div className="text-[#0500ff] bg-white w-max rounded-full py-2.5 px-6 font-semibold hover:cursor-pointer">Join Our Network</div>
         </a>
         </div>
-        <div><img className="w-52 mx-auto" src={trust} alt="Trust"  id="notinvert" /></div>
+        <div><img className="w-52 mx-auto" src={trust} alt="Trust" /></div>
       </div>
     </div>
   );

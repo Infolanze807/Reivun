@@ -84,7 +84,7 @@ const Footer = () => {
             Reivun
           </div>
           <div className="pt-3">
-            <img className="mx-auto w-40 rounded-full" src={logo} alt="Gnosis"  id="notinvert" />
+            <img className="mx-auto w-40 rounded-full" src={logo} alt="Gnosis" />
           </div>
         </div>
         <div className="lg:col-span-6">
@@ -166,7 +166,7 @@ const Footer = () => {
         </div>
         <div className="lg:col-span-2 md:text-center">
           <div className="pb-5">
-            <img className="md:mx-auto" src={Certificate} alt="Certfied"  id="notinvert" />
+            <img className="md:mx-auto" src={Certificate} alt="Certfied" />
           </div>
           <div>
             <div className="text-lg font-semibold pb-1 text-white">
