@@ -546,7 +546,7 @@ import { MoonPayBuyWidget } from "@moonpay/moonpay-react";
 import { MdPlayArrow } from "react-icons/md";
 import { CgClose } from "react-icons/cg";
 import { FaBars } from "react-icons/fa6";
-import logo from "../Images/gno-wallet.png";
+import logo from "../Images/logo-reivun.png";
 
 const Header = () => {
   const [isWidgetVisible, setIsWidgetVisible] = useState(false);
