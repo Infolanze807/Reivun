@@ -6,6 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    filter: invert(00);
 }
 body{
     background-color: var(--bg-color);
@@ -21,7 +22,12 @@ body{
 {
     outline: 1px solid transparent;  
 }
-img
-{
-  filter: invert(0) !important;
-}
+
+@layer utilities {
+    img {
+      filter: none !important;
+      -webkit-filter: none !important;
+      mix-blend-mode: normal !important;
+      isolation: isolate;
+    }
+  }

@@ -574,11 +574,11 @@ const Header = () => {
       <nav className="bg-zinc-800 fixed w-full z-20 top-0 border-b border-[--green-color]">
         <div className="grid grid-cols-12 p-2 mx-2 md:mx-5 lg:mx-8 items-center">
           {/* Logo and Site Name */}
-          <div className="lg:col-span-4 col-span-6">
+          <div className="lg:col-span-4 col-span-6 bg-zinc-800">
             <a href="/" className="flex items-center grid-cols-3 space-x-3">
               <img
                 src={logo}
-                className="md:w-16 w-12 rounded-full"
+                className="md:w-16 w-12 rounded-full no-invert" 
                 alt="Reivun Logo"
               />
               <span className="text-3xl font-semibold text-[--main-color]">
