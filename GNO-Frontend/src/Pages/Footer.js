@@ -178,7 +178,7 @@ const Footer = () => {
       target="_blank" 
       rel="noopener noreferrer"
     >
-      <FaTelegramPlane className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover:cursor-pointer transition-all duration-300" />
+      <FaTelegramPlane className="bg-white p-1.5 text-3xl rounded hover:text-[--main-color] hover:cursor-pointer transition-all duration-300 dark:invert-0" />
     </a>
           </div>
           </div>

@@ -578,7 +578,7 @@ const Header = () => {
             <a href="/" className="flex items-center grid-cols-3 space-x-3">
               <img
                 src={logo}
-                className="md:w-16 w-12 rounded-full no-invert" 
+                className="md:w-16 w-12 rounded-full dark:invert-0" 
                 alt="Reivun Logo"
               />
               <span className="text-3xl font-semibold text-[--main-color]">

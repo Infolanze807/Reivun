@@ -21,12 +21,3 @@ body{
 {
     outline: 1px solid transparent;  
 }
-
-@layer utilities {
-    img {
-      filter: none !important;
-      -webkit-filter: none !important;
-      mix-blend-mode: normal !important;
-      isolation: isolate;
-    }
-  }
