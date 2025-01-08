@@ -363,7 +363,7 @@ app.get('/symbols', async (req, res) => {
     // Start the interval to fetch and emit data
     setIntervalAsync(() => logAndEmitData(exchange), 30000);
 
-    res.json({ message: 'Data logging started successfully' });
+    // res.json({ message: 'Data logging started successfully' });
   } catch (error) {
     console.error("Error initializing exchange:", error.message);
     res.status(500).json({ error: 'Failed to connect to Bitget' });
