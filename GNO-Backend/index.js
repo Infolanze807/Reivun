@@ -338,17 +338,23 @@ async function logAndEmitData(exchange) {
 app.get('/symbols', async (req, res) => {
   const { apiKey, secretKey, passphrase } = req.query;
 
+  console.log("Received API Key:", apiKey);
+  console.log("Received Secret Key:", secretKey);
+  console.log("Received Passphrase:", passphrase);
+
+
   if (!apiKey || !secretKey || !passphrase) {
     return res.status(400).json({ error: 'API credentials are required' });
   }
 
   try {
     const exchange = new ccxt.bitget({
-      apiKey,
+      apiKey: apiKey,
       secret: secretKey,
       password: passphrase,
-      timeout: 20000,
+      timeout: 20000 
     });
+
 
     // Test connection
     await exchange.fetchBalance();
