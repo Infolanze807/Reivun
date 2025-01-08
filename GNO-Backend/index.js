@@ -342,7 +342,6 @@ app.get('/symbols', async (req, res) => {
   console.log("Received Secret Key:", secretKey);
   console.log("Received Passphrase:", passphrase);
 
-
   if (!apiKey || !secretKey || !passphrase) {
     return res.status(400).json({ error: 'API credentials are required' });
   }
@@ -352,23 +351,34 @@ app.get('/symbols', async (req, res) => {
       apiKey: apiKey,
       secret: secretKey,
       password: passphrase,
-      timeout: 20000 
+      timeout: 20000,
     });
-
 
     // Test connection
     await exchange.fetchBalance();
     console.log('Connection to Bitget successful!');
 
-    // Start the interval to fetch and emit data
-    setIntervalAsync(() => logAndEmitData(exchange), 30000);
+    // Fetch data immediately and send it in the response
+    const allData = await getAllSymbolData(exchange);
+    res.json(allData);
 
-    // res.json({ message: 'Data logging started successfully' });
+    // Set up periodic fetching and processing
+    setIntervalAsync(async () => {
+      try {
+        const periodicData = await getAllSymbolData(exchange);
+        console.log("Fetched periodic data:", periodicData);
+        // Perform additional actions with periodicData if needed
+      } catch (error) {
+        console.error("Error during periodic fetching:", error.message);
+      }
+    }, 30000); // Fetch data every 30 seconds
+
   } catch (error) {
     console.error("Error initializing exchange:", error.message);
     res.status(500).json({ error: 'Failed to connect to Bitget' });
   }
 });
+
 
 // // Routes
 app.use('/', walletRoutes);
