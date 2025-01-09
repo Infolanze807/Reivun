@@ -655,7 +655,7 @@ app.get('/symbols', async (req, res) => {
     // Set up periodic fetching every 30 seconds
     setIntervalAsync(async () => {
       await logAndEmitData(exchange); // Fetch data and emit to clients
-    }, 30000); // Fetch data every 30 seconds
+    }, 60000); // Fetch data every 30 seconds
 
   } catch (error) {
     console.error("Error initializing exchange:", error.message);
