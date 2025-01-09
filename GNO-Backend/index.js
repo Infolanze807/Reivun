@@ -393,6 +393,146 @@
 //   console.log(`Server running on port ${port}`);
 // });
 
+// require('dotenv').config();
+// const express = require('express');
+// const cors = require('cors');
+// const mongoose = require('./Config/database');
+// const walletRoutes = require('./Routes/walletRoutes');
+// const exchangeRoutes = require('./Routes/exchangeRoutes');
+// const transactionRoutes = require('./Routes/transactionRoutes');
+// const ccxt = require('ccxt');
+// const moment = require('moment');
+// const { setIntervalAsync } = require('set-interval-async/dynamic');
+// const http = require('http');
+// const socketIo = require('socket.io');
+
+// const app = express();
+// const server = http.createServer(app);
+// const io = socketIo(server, {
+//   cors: {
+//     origin: "*",
+//     methods: ["GET", "POST"]
+//   }
+// });
+
+// const port = process.env.PORT || 5000;
+
+// app.use(express.json());
+// app.use(cors({
+//   origin: "*",
+//   optionsSuccessStatus: 200,
+// }));
+
+// const cryptosToAnalyze = [
+//   'BTC/USDT', 'TAO/USDT', 'ETH/USDT', 'XRP/USDT', 'SHIB/USDT', 'PEPE/USDT',
+//   'SOL/USDT', 'BGB/USDT', 'ADA/USDT', 'SUI/USDT', 'SEI/USDT', 'DOGE/USDT',
+//   'FIL/USDT', 'LTC/USDT', 'LINK/USDT', 'FET/USDT', 'PEAQ/USDT', 'TON/USDT',
+//   'APE/USDT', 'AVAX/USDT', 'ARB/USDT', 'TIA/USDT', 'NEAR/USDT', 'KAS/USDT',
+//   'APT/USDT', 'ATOM/USDT', 'RENDER/USDT', 'STX/USDT', 'INJ/USDT', 'FTM/USDT',
+//   'JASMY/USDT', 'BNB/USDT', '1INCH/USDT', 'BONK/USDT', 'SUSHI/USDT',
+//   'ROSE/USDT', 'AERO/USDT'
+// ];
+
+// const timeframe = '1m';
+
+// io.on('connection', (socket) => {
+//   console.log('New client connected');
+//   socket.on('disconnect', () => {
+//     console.log('Client disconnected');
+//   });
+// });
+
+// async function fetchCandles(exchange, symbol, timeframe, limit = 100) {
+//   try {
+//     const candles = await exchange.fetchOHLCV(symbol, timeframe, undefined, limit);
+//     return candles.map(([timestamp, open, high, low, close, volume]) => {
+//       const realBody = Math.abs(close - open);
+//       const lowerShadow = Math.min(open, close) - low;
+//       const upperShadow = high - Math.max(open, close);
+
+//       const isHammer =
+//         lowerShadow > 2 * realBody &&
+//         upperShadow <= 0.1 * realBody &&
+//         close > open;
+
+//       return {
+//         timestamp: moment(timestamp).format('YYYY-MM-DD HH:mm:ss'),
+//         open,
+//         high,
+//         low,
+//         close,
+//         volume,
+//         isHammer,
+//       };
+//     });
+//   } catch (error) {
+//     console.error(`Error fetching candles for ${symbol}:`, error.message);
+//     return [];
+//   }
+// }
+
+// async function getAllSymbolData(exchange) {
+//   const allData = {};
+//   for (const symbol of cryptosToAnalyze) {
+//     const candles = await fetchCandles(exchange, symbol, timeframe);
+//     const lastCandle = candles[candles.length - 1];
+//     allData[symbol] = lastCandle || {};
+//   }
+//   return allData;
+// }
+
+// async function logAndEmitData(exchange) {
+//   try {
+//     const allData = await getAllSymbolData(exchange);
+//     console.log("Fetched Data:", allData);
+//     io.emit('symbolsData', allData); // Emit data to all connected clients
+//   } catch (error) {
+//     console.error("Error during data logging and emitting:", error.message);
+//   }
+// }
+
+// app.get('/symbols', async (req, res) => {
+//   const { apiKey, secretKey, passphrase } = req.query;
+
+//   if (!apiKey || !secretKey || !passphrase) {
+//     return res.status(400).json({ error: 'API credentials are required' });
+//   }
+
+//   try {
+//     const exchange = new ccxt.bitget({
+//       apiKey: apiKey,
+//       secret: secretKey,
+//       password: passphrase,
+//       timeout: 20000,
+//     });
+
+//     await exchange.fetchBalance();
+//     console.log('Connection to Bitget successful!');
+
+//     const allData = await getAllSymbolData(exchange);
+//     res.json(allData);
+
+//     // Set up periodic fetching every 30 seconds
+//     setIntervalAsync(async () => {
+//       await logAndEmitData(exchange); // Fetch data and emit to clients
+//     }, 30000); // Fetch data every 30 seconds
+
+//   } catch (error) {
+//     console.error("Error initializing exchange:", error.message);
+//     res.status(500).json({ error: 'Failed to connect to Bitget' });
+//   }
+// });
+
+// app.use('/', walletRoutes);
+// app.use('/', exchangeRoutes);
+// app.use('/', transactionRoutes);
+
+// app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
+
+// server.listen(port, () => {
+//   console.log(`Server running on port ${port}`);
+// });
+
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
@@ -532,3 +672,4 @@ app.get("/", (req, res) => res.send("GNO BACKEND RUN..."));
 server.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
